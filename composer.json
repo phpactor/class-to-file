@@ -1,0 +1,32 @@
+{
+    "name": "dtl/composer-inflector",
+    "description": "Inflect paths from namespaces etc.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Leech",
+            "email": "daniel@dantleech.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^6.1",
+        "symfony/filesystem": "^3.2"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "DTL\\ClassFileConverter\\": "lib/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DTL\\ClassFileConverter\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
