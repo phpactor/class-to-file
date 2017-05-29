@@ -6,15 +6,20 @@ final class FilePath
 {
     private $path;
 
-    private function __construct()
+    private function __construct(string $path)
     {
+        $this->path = $path;
     }
 
     public static function fromString($string)
     {
-        $new = new self();
-        $new->path = $string;
+        return new self($string);
+    }
 
-        return $new;
+    public static function fromParts(array $parts)
+    {
+        $path = implode('/', $parts);
+
+        return new self($path);
     }
 }

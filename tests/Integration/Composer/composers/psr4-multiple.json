@@ -9,7 +9,7 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Acme\\Test\\": "src/"
+            "Acme\\Test\\": [ "psr4/", "psr4-1" ]
         }
     }
 }

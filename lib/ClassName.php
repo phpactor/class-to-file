@@ -22,4 +22,9 @@ final class ClassName
     {
         return $this->fullyQualifiedName;
     }
+
+    public function beginsWith($prefix)
+    {
+        return 0 === strpos($this->fullyQualifiedName, $prefix);
+    }
 }

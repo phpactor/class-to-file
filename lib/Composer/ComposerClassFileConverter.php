@@ -7,6 +7,7 @@ use DTL\ClassFileConverter\ClassName;
 use DTL\ClassFileConverter\FilePath;
 use DTL\ClassFileConverter\ClassToFile;
 use DTL\ClassFileConverter\FileToClass;
+use DTL\ClassFileConverter\FilePathCandidates;
 
 final class ComposerClassFileConverter implements ClassToFile, FileToClass
 {
@@ -18,14 +19,22 @@ final class ComposerClassFileConverter implements ClassToFile, FileToClass
     public function __construct(ClassLoader $classLoader)
     {
         $this->classLoader = $classLoader;
+        $this->classToFile = new ComposerClassToFile($classLoader);
     }
 
-    public function classToFile(ClassName $className): FilePath
+    public function classToFile(ClassName $className): FilePathCandidates
     {
+        return $this->classToFile->classToFile($className);
     }
 
     public function fileToClass(FilePath $filePath): ClassName
     {
+        if ($filePath->isAbsolute()) {
+            throw new \InvalidArgumentException(sprintf(
+                'Do not support absolute paths.'
+            ));
+        }
+
         $prefixes = array_merge(
             $this->classLoader->getPrefixes(),
             $this->classLoader->getPrefixesPsr4(),
@@ -33,12 +42,6 @@ final class ComposerClassFileConverter implements ClassToFile, FileToClass
         );
 
         $map = [];
-
-        if ($filePath->isAbsolute()) {
-            throw new \InvalidArgumentException(sprintf(
-                'Do not support absolute paths.'
-            ));
-        }
 
         $cwd = getcwd() . '/';
 
