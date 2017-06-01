@@ -20,16 +20,16 @@ class ComposerClassToFile implements ClassToFile
         $this->classLoader = $classLoader;
     }
 
-    public function classToFile(ClassName $className): FilePathCandidates
+    public function classToFileCandidates(ClassName $className): FilePathCandidates
     {
-        $candidates = FilePathCandidates::create();
 
+        $candidates = [];
         foreach ($this->getStrategies() as $strategy) {
             list($prefixes, $inflector) = $strategy;
             $this->resolveFile($candidates, $prefixes, $inflector, $className);
         }
 
-        return $candidates;
+        return FilePathCandidates::fromFilePaths($candidates);
     }
 
     private function getStrategies(): array
@@ -46,14 +46,14 @@ class ComposerClassToFile implements ClassToFile
         ];
     }
 
-    private function resolveFile(FilePathCandidates $candidates, array $prefixes, NameInflector $inflector, ClassName $className)
+    private function resolveFile(&$candidates, array $prefixes, NameInflector $inflector, ClassName $className)
     {
         list($prefix, $files) = $this->getFileCandidates($className, $prefixes);
 
         $filePaths = [];
         foreach ($files as $file) {
             $relPath = $inflector->inflectToRelativePath($prefix, $className);
-            $candidates->add(FilePath::fromParts([ $file, $relPath ]));
+            $candidates[] = FilePath::fromParts([ $file, $relPath ]);
         }
     }
 

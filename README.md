@@ -26,5 +26,4 @@ $candidates = $classToFile->classToFileCandidates(ClassName::fromString('Foobar\
 echo (string) $candidates->empty(); // return true if there are no candidates
 echo (string) $candidates->first(); // path to the first candidate
 echo (string) $candidates->firstExisting(); // path to the first existing file path
-
-
+```

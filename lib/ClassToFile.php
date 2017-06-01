@@ -4,5 +4,5 @@ namespace DTL\ClassFileConverter;
 
 interface ClassToFile
 {
-    public function classToFile(ClassName $className): FilePathCandidates;
+    public function classToFileCandidates(ClassName $className): FilePathCandidates;
 }

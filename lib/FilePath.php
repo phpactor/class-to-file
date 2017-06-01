@@ -11,6 +11,16 @@ final class FilePath
         $this->path = $path;
     }
 
+    public function isAbsolute()
+    {
+        return 0 === strpos($this->path, '/');
+    }
+
+    public function __toString()
+    {
+        return $this->path;
+    }
+
     public static function fromString($string)
     {
         return new self($string);

@@ -6,11 +6,18 @@ use DTL\ClassFileConverter\FilePath;
 
 final class FilePathCandidates implements \IteratorAggregate
 {
-    private $filePaths;
+    private $filePaths = [];
+
+    private function __construct(array $filePaths = [])
+    {
+        foreach ($filePaths as $filePath) {
+            $this->add($filePath);
+        }
+    }
 
     public static function create()
     {
-        return new self();
+        return new self([]);
     }
 
     public static function fromFilePaths(array $filePaths)
@@ -20,15 +27,12 @@ final class FilePathCandidates implements \IteratorAggregate
 
     public function add(FilePath $filePath)
     {
-        $new = new self();
-        $new->filePaths[] = $filePath;
-
-        return $new;
+        $this->filePaths[] = $filePath;
     }
 
     public function getIterator()
     {
-        return $this->filePaths;
+        return new \ArrayIterator($this->filePaths);
     }
 
     public function notEmpty(): bool

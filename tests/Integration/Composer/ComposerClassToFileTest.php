@@ -8,11 +8,12 @@ use DTL\ClassFileConverter\ClassName;
 use DTL\ClassFileConverter\Tests\Integration\IntegrationTestCase;
 use Symfony\Component\Filesystem\Filesystem;
 use DTL\ClassFileConverter\FilePathCandidates;
+use DTL\ClassFileConverter\Composer\ComposerClassToFile;
 
 /**
  * @runTestsInSeparateProcesses
  */
-class ComposerClassFileConverterTest extends ComposerTestCase
+class ComposerClassToFileTest extends ComposerTestCase
 {
     public function setUp()
     {
@@ -61,7 +62,7 @@ class ComposerClassFileConverterTest extends ComposerTestCase
     public function testPsr0AndPsr4()
     {
         $this->loadExample('psr0-psr4.json');
-        $this->assertClassNameToFilePath('Acme\\Test\\Class', [ 'psr0/Acme/Test/Class.php', 'psr4/Class.php' ]);
+        $this->assertClassNameToFilePath('Acme\\Test\\Class', [ 'psr4/Class.php', 'psr0/Acme/Test/Class.php' ]);
     }
 
     private function assertClassNameToFilePath($className, array $filePaths)
@@ -70,10 +71,10 @@ class ComposerClassFileConverterTest extends ComposerTestCase
             return FilePath::fromParts([$this->workspacePath(), $filePath]);
         }, $filePaths);
 
-        $converter = new ComposerClassFileConverter($this->getClassLoader());
+        $converter = new ComposerClassToFile($this->getClassLoader());
         $this->assertEquals(
             FilePathCandidates::fromFilePaths($filePaths),
-            $converter->classToFile(ClassName::fromString($className))
+            $converter->classToFileCandidates(ClassName::fromString($className))
         );
     }
 }
