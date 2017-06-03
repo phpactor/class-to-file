@@ -4,14 +4,18 @@ Class To File Transformer
 [![Build Status](https://travis-ci.org/dtl/composer-inflector.svg?branch=master)](https://travis-ci.org/dtl/composer-inflector)
 [![StyleCI](https://styleci.io/repos/<repo-id>/shield)](https://styleci.io/repos/<repo-id>)
 
-This library provides facilities to transform class names to files and
-vice-versa.
+This library provides facilities to guess/transform class names to files paths
+and vice-versa.
 
 Use cases:
 
 - **Class generation**: File name from a class name in order to *create a new class file*.
 - **Static analysis**: Determine the location of a class in order to
   introspect it.
+
+Supports:
+
+- **Composer with PSR-0 and PSR-4**
 
 Usage
 -----
@@ -24,8 +28,7 @@ $classToFile = new ComposerClassToFile($autoloader);
 $candidates = $classToFile->classToFileCandidates(ClassName::fromString('Foobar\\Barfoo\\MyClass');
 
 echo (string) $candidates->empty(); // return true if there are no candidates
-echo (string) $candidates->first(); // path to the first candidate
-echo (string) $candidates->firstExisting(); // path to the first existing file path
+echo (string) $candidates->best(); // path to the "best" candidate
 ```
 
 TODO
