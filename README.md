@@ -2,6 +2,7 @@ Class To File Transformer
 =========================
 
 [![Build Status](https://travis-ci.org/dantleech/class-to-file.svg?branch=master)](https://travis-ci.org/dantleech/class-to-file)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/dantleech/class-to-file/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/dantleech/class-to-file/?branch=master)
 
 This library provides facilities to guess/transform class names to files paths
 and vice-versa.
