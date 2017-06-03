@@ -30,9 +30,14 @@ final class ClassNameCandidates implements \IteratorAggregate
         return new \ArrayIterator($this->classNames);
     }
 
-    public function notEmpty(): bool
+    public function noneFound(): bool
     {
-        return !empty($this->classNames);
+        return empty($this->classNames);
+    }
+
+    public function best(): ClassName
+    {
+        return reset($this->classNames);
     }
 
     private function add(ClassName $className)

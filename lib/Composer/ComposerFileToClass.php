@@ -31,22 +31,33 @@ final class ComposerFileToClass implements FileToClass
             ));
         }
 
-        $psr4Candidates = $this->populateCandidates($filePath, $this->classLoader->getPrefixesPsr4());
-        $psr0Candidates = $this->populateCandidates($filePath, $this->classLoader->getPrefixes());
-
-        $candidates = array_merge($psr4Candidates, $psr0Candidates);
-
-        usort($candidates, function ($candidateA, $candidateB) {
-            return -(strlen($candidateA[0]) <=> strlen($candidateB[0]));
-        });
-
         $classNames = [];
-        foreach ($candidates as $candidate) {
-            list($pathPrefix, $classPrefix) = $candidate;
-            $classNames[] = (new Psr4NameInflector())->inflectToClassName($filePath, $pathPrefix, $classPrefix);
+
+        foreach ($this->getStrategies() as $prefixes => $strategy) {
+            list($prefixes, $inflector) = $strategy;
+            $candidates = $this->populateCandidates($filePath, $prefixes);
+
+            foreach ($candidates as $candidate) {
+                list($pathPrefix, $classPrefix) = $candidate;
+                $classNames[] = $inflector->inflectToClassName($filePath, $pathPrefix, $classPrefix);
+            }
         }
 
         return ClassNameCandidates::fromClassNames($classNames);
+    }
+
+    private function getStrategies(): array
+    {
+        return [
+            [
+                $this->classLoader->getPrefixesPsr4(),
+                new Psr4NameInflector()
+            ],
+            [
+                $this->classLoader->getPrefixes(),
+                new Psr0NameInflector(),
+            ]
+        ];
     }
 
     private function populateCandidates(FilePath $filePath, array $prefixes)

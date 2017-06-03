@@ -69,12 +69,15 @@ class ComposerFileToClassTest extends ComposerTestCase
     }
 
     /**
-     * @testdox PSR-4 + PSR-0 matching prefixes.
+     * @testdox PSR-4 + PSR-0 with conflict
      */
-    public function testPsr0AndPsr4()
+    public function testPsr0AndPsr4Conflict()
     {
-        $this->loadExample('psr0-psr4.json');
-        $this->assertFilePathToClassName('Acme\\Test\\Class', [ 'psr0/Acme/Test/Class.php', 'psr4/Class.php' ]);
+        $this->loadExample('psr0-psr4-conflict.json');
+        $this->assertFilePathToClassName('/src/Acme/Test/Class.php', [
+            'Acme\\Test\\Acme\\Test\\Class', // psr4 first
+            'Acme\\Test\\Class' // psr0 second
+        ]);
     }
 
     private function assertFilePathToClassName($filePath, array $classNames)

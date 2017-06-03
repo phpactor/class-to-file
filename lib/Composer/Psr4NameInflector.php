@@ -5,7 +5,7 @@ namespace DTL\ClassFileConverter\Composer;
 use DTL\ClassFileConverter\ClassName;
 use DTL\ClassFileConverter\FilePath;
 
-class Psr4NameInflector implements NameInflector
+final class Psr4NameInflector implements NameInflector
 {
     public function inflectToRelativePath(string $prefix, ClassName $className): string
     {

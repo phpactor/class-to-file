@@ -30,13 +30,18 @@ final class FilePathCandidates implements \IteratorAggregate
         $this->filePaths[] = $filePath;
     }
 
+    public function best(): FilePath
+    {
+        return reset($this->filePaths);
+    }
+
+    public function noneFound(): bool
+    {
+        return empty($this->filePaths);
+    }
+
     public function getIterator()
     {
         return new \ArrayIterator($this->filePaths);
-    }
-
-    public function notEmpty(): bool
-    {
-        return !empty($this->filePaths);
     }
 }
