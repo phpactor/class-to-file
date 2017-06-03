@@ -20,7 +20,6 @@ final class ComposerFileToClass implements FileToClass
     public function __construct(ClassLoader $classLoader)
     {
         $this->classLoader = $classLoader;
-        $reflection = new \ReflectionClass($classLoader);
     }
 
     public function fileToClass(FilePath $filePath): ClassNameCandidates

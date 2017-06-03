@@ -50,7 +50,6 @@ class ComposerClassToFile implements ClassToFile
     {
         list($prefix, $files) = $this->getFileCandidates($className, $prefixes);
 
-        $filePaths = [];
         foreach ($files as $file) {
             $relPath = $inflector->inflectToRelativePath($prefix, $className);
             $candidates[] = FilePath::fromParts([ $file, $relPath ]);

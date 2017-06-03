@@ -15,11 +15,6 @@ final class ClassNameCandidates implements \IteratorAggregate
         }
     }
 
-    public static function create()
-    {
-        return new self();
-    }
-
     public static function fromClassNames(array $classNames)
     {
         return new self($classNames);
