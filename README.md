@@ -1,8 +1,7 @@
 Class To File Transformer
 =========================
 
-[![Build Status](https://travis-ci.org/dtl/composer-inflector.svg?branch=master)](https://travis-ci.org/dtl/composer-inflector)
-[![StyleCI](https://styleci.io/repos/<repo-id>/shield)](https://styleci.io/repos/<repo-id>)
+[![Build Status](https://travis-ci.org/dantleech/class-to-file.svg?branch=master)](https://travis-ci.org/dantleech/class-to-file)
 
 This library provides facilities to guess/transform class names to files paths
 and vice-versa.
