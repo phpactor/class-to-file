@@ -1,6 +1,6 @@
 {
-    "name": "dtl/composer-inflector",
-    "description": "Inflect paths from namespaces etc.",
+    "name": "dtl/class-to-file",
+    "description": "Library to covert class names to file paths and vice-versa",
     "license": "MIT",
     "authors": [
         {
