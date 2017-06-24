@@ -25,6 +25,11 @@ final class FilePathCandidates implements \IteratorAggregate
         return new self($filePaths);
     }
 
+    public function toArray(): array
+    {
+        return $this->filePath;
+    }
+
     public function add(FilePath $filePath)
     {
         $this->filePaths[] = $filePath;

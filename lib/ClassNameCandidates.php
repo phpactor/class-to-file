@@ -32,6 +32,12 @@ final class ClassNameCandidates implements \IteratorAggregate
 
     public function best(): ClassName
     {
+        if (empty($this->classNames)) {
+            throw new \RuntimeException(
+                'There are no class name candidates'
+            );
+        }
+
         return reset($this->classNames);
     }
 
