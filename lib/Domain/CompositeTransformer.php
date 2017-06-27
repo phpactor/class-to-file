@@ -1,6 +1,10 @@
 <?php
 
-namespace DTL\ClassFileConverter;
+namespace DTL\ClassFileConverter\Domain;
+
+use DTL\ClassFileConverter\Domain\ClassName;
+use DTL\ClassFileConverter\Domain\ClassNameCandidates;
+use DTL\ClassFileConverter\Domain\ClassToFile;
 
 final class CompositeTransformer implements ClassToFile, FileToClass
 {

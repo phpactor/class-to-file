@@ -1,12 +1,12 @@
 <?php
 
-namespace DTL\ClassFileConverter\Composer;
+namespace DTL\ClassFileConverter\Adapter\Composer;
 
-use DTL\ClassFileConverter\ClassToFile;
+use DTL\ClassFileConverter\Domain\ClassToFile;
 use Composer\Autoload\ClassLoader;
-use DTL\ClassFileConverter\ClassName;
-use DTL\ClassFileConverter\FilePath;
-use DTL\ClassFileConverter\FilePathCandidates;
+use DTL\ClassFileConverter\Domain\ClassName;
+use DTL\ClassFileConverter\Domain\FilePath;
+use DTL\ClassFileConverter\Domain\FilePathCandidates;
 
 class ComposerClassToFile implements ClassToFile
 {

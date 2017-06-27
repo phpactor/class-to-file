@@ -1,9 +1,10 @@
 <?php
 
-namespace DTL\ClassFileConverter\Composer;
+namespace DTL\ClassFileConverter\Adapter\Composer;
 
-use DTL\ClassFileConverter\ClassName;
-use DTL\ClassFileConverter\FilePath;
+use DTL\ClassFileConverter\Domain\ClassName;
+use DTL\ClassFileConverter\Domain\FilePath;
+use DTL\ClassFileConverter\Adapter\Composer\NameInflector;
 
 final class Psr0NameInflector implements NameInflector
 {

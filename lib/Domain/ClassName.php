@@ -1,6 +1,6 @@
 <?php
 
-namespace DTL\ClassFileConverter;
+namespace DTL\ClassFileConverter\Domain;
 
 final class ClassName
 {

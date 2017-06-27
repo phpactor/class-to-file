@@ -3,13 +3,13 @@
 namespace DTL\ClassFileConverter\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use DTL\ClassFileConverter\ClassToFile;
-use DTL\ClassFileConverter\CompositeTransformer;
-use DTL\ClassFileConverter\ClassName;
-use DTL\ClassFileConverter\FileToClass;
-use DTL\ClassFileConverter\FilePathCandidates;
-use DTL\ClassFileConverter\ClassNameCandidates;
-use DTL\ClassFileConverter\FilePath;
+use DTL\ClassFileConverter\Domain\ClassToFile;
+use DTL\ClassFileConverter\Domain\CompositeTransformer;
+use DTL\ClassFileConverter\Domain\ClassName;
+use DTL\ClassFileConverter\Domain\FileToClass;
+use DTL\ClassFileConverter\Domain\FilePathCandidates;
+use DTL\ClassFileConverter\Domain\ClassNameCandidates;
+use DTL\ClassFileConverter\Domain\FilePath;
 
 class CompositeTransformerTest extends TestCase
 {

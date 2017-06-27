@@ -3,11 +3,11 @@
 namespace DTL\ClassFileConverter\Tests\Integration\Composer;
 
 use DTL\ClassFileConverter\Composer\ComposerClassFileConverter;
-use DTL\ClassFileConverter\FilePath;
-use DTL\ClassFileConverter\ClassName;
+use DTL\ClassFileConverter\Domain\FilePath;
+use DTL\ClassFileConverter\Domain\ClassName;
 use DTL\ClassFileConverter\Tests\Integration\IntegrationTestCase;
 use Symfony\Component\Filesystem\Filesystem;
-use DTL\ClassFileConverter\FilePathCandidates;
+use DTL\ClassFileConverter\Domain\FilePathCandidates;
 
 /**
  * @runTestsInSeparateProcesses

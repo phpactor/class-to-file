@@ -3,7 +3,7 @@
 namespace DTL\ClassFileConverter\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use DTL\ClassFileConverter\ClassName;
+use DTL\ClassFileConverter\Domain\ClassName;
 
 class ClassNameTest extends TestCase
 {
