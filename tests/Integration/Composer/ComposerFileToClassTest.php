@@ -87,7 +87,7 @@ class ComposerFileToClassTest extends ComposerTestCase
             return ClassName::fromString($className);
         }, $classNames));
 
-        $actual = $converter->fileToClass(FilePath::fromString($this->workspacePath() . $filePath));
+        $actual = $converter->fileToClassCandidates(FilePath::fromString($this->workspacePath() . $filePath));
 
         $this->assertEquals($expected, $actual);
     }

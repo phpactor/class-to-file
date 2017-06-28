@@ -4,7 +4,7 @@ namespace DTL\ClassFileConverter\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 use DTL\ClassFileConverter\Domain\ClassToFile;
-use DTL\ClassFileConverter\Domain\CompositeTransformer;
+use DTL\ClassFileConverter\Domain\ClassToFileFileToClass;
 use DTL\ClassFileConverter\Domain\ClassName;
 use DTL\ClassFileConverter\Domain\FileToClass;
 use DTL\ClassFileConverter\Domain\FilePathCandidates;
@@ -18,11 +18,11 @@ class CompositeTransformerTest extends TestCase
     public function setUp()
     {
         $this->classToFile = $this->prophesize(ClassToFile::class);
-        $this->fileToClass = $this->prophesize(FileToClass::class);
+        $this->fileToClassCandidates = $this->prophesize(FileToClass::class);
 
-        $this->transformer = new CompositeTransformer(
+        $this->transformer = new ClassToFileFileToClass(
             $this->classToFile->reveal(),
-            $this->fileToClass->reveal()
+            $this->fileToClassCandidates->reveal()
         );
     }
 
@@ -46,9 +46,9 @@ class CompositeTransformerTest extends TestCase
     {
         $filePath = FilePath::fromString('Foo');
         $expectedCandidates = ClassNameCandidates::fromClassNames([]);
-        $this->fileToClass->fileToClass($filePath)->willReturn($expectedCandidates);
+        $this->fileToClassCandidates->fileToClassCandidates($filePath)->willReturn($expectedCandidates);
 
-        $candidates = $this->transformer->fileToClass($filePath);
+        $candidates = $this->transformer->fileToClassCandidates($filePath);
         $this->assertSame($expectedCandidates, $candidates);
     }
 }

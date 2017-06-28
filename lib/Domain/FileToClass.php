@@ -7,5 +7,5 @@ use DTL\ClassFileConverter\Domain\FilePath;
 
 interface FileToClass
 {
-    public function fileToClass(FilePath $filePath): ClassNameCandidates;
+    public function fileToClassCandidates(FilePath $filePath): ClassNameCandidates;
 }

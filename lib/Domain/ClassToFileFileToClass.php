@@ -3,10 +3,8 @@
 namespace DTL\ClassFileConverter\Domain;
 
 use DTL\ClassFileConverter\Domain\ClassName;
-use DTL\ClassFileConverter\Domain\ClassNameCandidates;
-use DTL\ClassFileConverter\Domain\ClassToFile;
 
-final class CompositeTransformer implements ClassToFile, FileToClass
+final class ClassToFileFileToClass
 {
     private $classToFile;
     private $fileToClass;
@@ -14,12 +12,12 @@ final class CompositeTransformer implements ClassToFile, FileToClass
     public function __construct(ClassToFile $classToFile, FileToClass $fileToClass)
     {
         $this->classToFile = $classToFile;
-        $this->fileToClass = $fileToClass;
+        $this->fileToClassCandidates = $fileToClass;
     }
 
-    public function fileToClass(FilePath $filePath): ClassNameCandidates
+    public function fileToClassCandidates(FilePath $filePath): ClassNameCandidates
     {
-        return $this->fileToClass->fileToClass($filePath);
+        return $this->fileToClassCandidates->fileToClassCandidates($filePath);
     }
 
     public function classToFileCandidates(ClassName $className): FilePathCandidates

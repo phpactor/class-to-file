@@ -22,7 +22,7 @@ final class ComposerFileToClass implements FileToClass
         $this->classLoader = $classLoader;
     }
 
-    public function fileToClass(FilePath $filePath): ClassNameCandidates
+    public function fileToClassCandidates(FilePath $filePath): ClassNameCandidates
     {
         if (false === $filePath->isAbsolute()) {
             throw new \InvalidArgumentException(sprintf(
