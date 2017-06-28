@@ -2,8 +2,6 @@
 
 namespace DTL\ClassFileConverter\Domain;
 
-use DTL\ClassFileConverter\Domain\ClassName;
-
 final class ClassNameCandidates implements \IteratorAggregate
 {
     private $classNames = [];

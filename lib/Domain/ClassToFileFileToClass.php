@@ -2,8 +2,6 @@
 
 namespace DTL\ClassFileConverter\Domain;
 
-use DTL\ClassFileConverter\Domain\ClassName;
-
 final class ClassToFileFileToClass
 {
     private $classToFile;

@@ -14,7 +14,7 @@ class ClassNameCandidatesTest extends TestCase
     public function testCreateFromClassNames()
     {
         $classNames = [
-            ClassName::fromString('Foobar')
+            ClassName::fromString('Foobar'),
         ];
 
         $candidates = ClassNameCandidates::fromClassNames($classNames);

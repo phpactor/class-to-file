@@ -2,11 +2,8 @@
 
 namespace DTL\ClassFileConverter\Tests\Integration\Composer;
 
-use DTL\ClassFileConverter\Composer\ComposerClassFileConverter;
 use DTL\ClassFileConverter\Domain\FilePath;
 use DTL\ClassFileConverter\Domain\ClassName;
-use DTL\ClassFileConverter\Tests\Integration\IntegrationTestCase;
-use Symfony\Component\Filesystem\Filesystem;
 use DTL\ClassFileConverter\Domain\FilePathCandidates;
 use DTL\ClassFileConverter\Adapter\Composer\ComposerClassToFile;
 
@@ -26,7 +23,7 @@ class ComposerClassToFileTest extends ComposerTestCase
     public function testPsr4()
     {
         $this->loadExample('psr4-simple.json');
-        $this->assertClassNameToFilePath('Acme\\Test\\Foo\\Class', [ 'psr4/Foo/Class.php' ]);
+        $this->assertClassNameToFilePath('Acme\\Test\\Foo\\Class', ['psr4/Foo/Class.php']);
     }
 
     /**
@@ -35,7 +32,7 @@ class ComposerClassToFileTest extends ComposerTestCase
     public function testPsr4MultipleMatches()
     {
         $this->loadExample('psr4-multiple-matching-prefixes.json');
-        $this->assertClassNameToFilePath('Acme\\Test\\Foo\\Bar\\Class', [ 'psr4/tests/Class.php' ]);
+        $this->assertClassNameToFilePath('Acme\\Test\\Foo\\Bar\\Class', ['psr4/tests/Class.php']);
     }
 
     /**
@@ -44,7 +41,7 @@ class ComposerClassToFileTest extends ComposerTestCase
     public function testPsr4MultipleDirectories()
     {
         $this->loadExample('psr4-multiple.json');
-        $this->assertClassNameToFilePath('Acme\\Test\\Class', [ 'psr4/Class.php', 'psr4-1/Class.php']);
+        $this->assertClassNameToFilePath('Acme\\Test\\Class', ['psr4/Class.php', 'psr4-1/Class.php']);
     }
 
     /**
@@ -53,7 +50,7 @@ class ComposerClassToFileTest extends ComposerTestCase
     public function testPsr0()
     {
         $this->loadExample('psr0-simple.json');
-        $this->assertClassNameToFilePath('Acme\\Test\\Foo\\Class', [ 'psr0/Acme/Test/Foo/Class.php' ]);
+        $this->assertClassNameToFilePath('Acme\\Test\\Foo\\Class', ['psr0/Acme/Test/Foo/Class.php']);
     }
 
     /**
@@ -62,7 +59,7 @@ class ComposerClassToFileTest extends ComposerTestCase
     public function testPsr0AndPsr4()
     {
         $this->loadExample('psr0-psr4.json');
-        $this->assertClassNameToFilePath('Acme\\Test\\Class', [ 'psr4/Class.php', 'psr0/Acme/Test/Class.php' ]);
+        $this->assertClassNameToFilePath('Acme\\Test\\Class', ['psr4/Class.php', 'psr0/Acme/Test/Class.php']);
     }
 
     private function assertClassNameToFilePath($className, array $filePaths)

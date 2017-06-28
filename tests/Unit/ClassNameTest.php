@@ -22,22 +22,22 @@ class ClassNameTest extends TestCase
             [
                 'Foobar\\BarFoo',
                 'Foobar',
-                true
+                true,
             ],
             [
                 'Foobar\\BarFoo',
                 'Foobar\\BarFoo',
-                true
+                true,
             ],
             [
                 'Foobar\\BarFoo',
                 'Foobar\\BarFoo\\BarBar',
-                false
+                false,
             ],
             [
                 'Foobar\\BarFoo',
                 'BarBar\\BarFoo\\BarBar',
-                false
+                false,
             ],
         ];
     }

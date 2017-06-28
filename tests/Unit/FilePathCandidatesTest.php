@@ -14,7 +14,7 @@ class FilePathCandidatesTest extends TestCase
     public function testCreateFromFilePaths()
     {
         $filePaths = [
-            FilePath::fromString('Foobar')
+            FilePath::fromString('Foobar'),
         ];
 
         $candidates = FilePathCandidates::fromFilePaths($filePaths);
@@ -29,7 +29,7 @@ class FilePathCandidatesTest extends TestCase
         $filePaths = [
             $filePath = FilePath::fromString('Foobar'),
             FilePath::fromString('123'),
-            FilePath::fromString('456')
+            FilePath::fromString('456'),
         ];
 
         $candidates = FilePathCandidates::fromFilePaths($filePaths);

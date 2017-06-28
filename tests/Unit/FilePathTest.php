@@ -3,7 +3,6 @@
 namespace DTL\ClassFileConverter\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use DTL\ClassFileConverter\Domain\ClassName;
 use DTL\ClassFileConverter\Domain\FilePath;
 
 class FilePathTest extends TestCase

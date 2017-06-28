@@ -2,11 +2,6 @@
 
 namespace DTL\ClassFileConverter\Domain;
 
-use DTL\ClassFileConverter\Domain\ClassName;
-use DTL\ClassFileConverter\Domain\ClassNameCandidates;
-use DTL\ClassFileConverter\Domain\ClassToFile;
-use DTL\ClassFileConverter\Domain\FilePath;
-
 class ChainFileToClass implements FileToClass
 {
     public function __construct(array $converters)

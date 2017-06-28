@@ -4,13 +4,12 @@ namespace DTL\ClassFileConverter\Adapter\Composer;
 
 use DTL\ClassFileConverter\Domain\ClassName;
 use DTL\ClassFileConverter\Domain\FilePath;
-use DTL\ClassFileConverter\Adapter\Composer\NameInflector;
 
 final class Psr0NameInflector implements NameInflector
 {
     public function inflectToRelativePath(string $prefix, ClassName $className): string
     {
-        return str_replace('\\', '/', $className) . '.php';
+        return str_replace('\\', '/', $className).'.php';
     }
 
     public function inflectToClassName(FilePath $filePath, string $pathPrefix, string $classPrefix): ClassName

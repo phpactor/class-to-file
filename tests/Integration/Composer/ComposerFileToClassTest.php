@@ -2,12 +2,8 @@
 
 namespace DTL\ClassFileConverter\Tests\Integration\Composer;
 
-use DTL\ClassFileConverter\Composer\ComposerClassFileConverter;
 use DTL\ClassFileConverter\Domain\FilePath;
 use DTL\ClassFileConverter\Domain\ClassName;
-use DTL\ClassFileConverter\Tests\Integration\IntegrationTestCase;
-use Symfony\Component\Filesystem\Filesystem;
-use DTL\ClassFileConverter\Domain\FilePathCandidates;
 use DTL\ClassFileConverter\Adapter\Composer\ComposerFileToClass;
 use DTL\ClassFileConverter\Domain\ClassNameCandidates;
 
@@ -27,7 +23,7 @@ class ComposerFileToClassTest extends ComposerTestCase
     public function testPsr4()
     {
         $this->loadExample('psr4-simple.json');
-        $this->assertFilePathToClassName('/psr4/Foo/Class.php', [ 'Acme\\Test\\Foo\\Class' ]);
+        $this->assertFilePathToClassName('/psr4/Foo/Class.php', ['Acme\\Test\\Foo\\Class']);
     }
 
     /**
@@ -38,7 +34,7 @@ class ComposerFileToClassTest extends ComposerTestCase
         $this->loadExample('psr4-multiple-matching-prefixes.json');
         $this->assertFilePathToClassName('/psr4/tests/Class.php', [
             'Acme\\Test\\Foo\\Bar\\Class',
-            'Acme\\Test\\tests\\Class'
+            'Acme\\Test\\tests\\Class',
         ]);
     }
 
@@ -51,7 +47,7 @@ class ComposerFileToClassTest extends ComposerTestCase
         $this->assertFilePathToClassName(
             '/psr4/Class.php',
             [
-                'Acme\\Test\\Class'
+                'Acme\\Test\\Class',
             ]
         );
     }
@@ -64,7 +60,7 @@ class ComposerFileToClassTest extends ComposerTestCase
         $this->loadExample('psr0-simple.json');
         $this->assertFilePathToClassName(
             '/psr0/Acme/Test/Foo/Class.php',
-            [ 'Acme\\Test\\Foo\\Class' ]
+            ['Acme\\Test\\Foo\\Class']
         );
     }
 
@@ -76,7 +72,7 @@ class ComposerFileToClassTest extends ComposerTestCase
         $this->loadExample('psr0-psr4-conflict.json');
         $this->assertFilePathToClassName('/src/Acme/Test/Class.php', [
             'Acme\\Test\\Acme\\Test\\Class', // psr4 first
-            'Acme\\Test\\Class' // psr0 second
+            'Acme\\Test\\Class', // psr0 second
         ]);
     }
 
@@ -87,7 +83,7 @@ class ComposerFileToClassTest extends ComposerTestCase
             return ClassName::fromString($className);
         }, $classNames));
 
-        $actual = $converter->fileToClassCandidates(FilePath::fromString($this->workspacePath() . $filePath));
+        $actual = $converter->fileToClassCandidates(FilePath::fromString($this->workspacePath().$filePath));
 
         $this->assertEquals($expected, $actual);
     }

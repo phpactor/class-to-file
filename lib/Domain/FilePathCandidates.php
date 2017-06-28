@@ -2,8 +2,6 @@
 
 namespace DTL\ClassFileConverter\Domain;
 
-use DTL\ClassFileConverter\Domain\FilePath;
-
 final class FilePathCandidates implements \IteratorAggregate
 {
     private $filePaths = [];

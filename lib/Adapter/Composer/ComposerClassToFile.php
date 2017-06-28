@@ -22,7 +22,6 @@ class ComposerClassToFile implements ClassToFile
 
     public function classToFileCandidates(ClassName $className): FilePathCandidates
     {
-
         $candidates = [];
         foreach ($this->getStrategies() as $strategy) {
             list($prefixes, $inflector) = $strategy;
@@ -37,12 +36,12 @@ class ComposerClassToFile implements ClassToFile
         return [
             [
                 $this->classLoader->getPrefixesPsr4(),
-                new Psr4NameInflector()
+                new Psr4NameInflector(),
             ],
             [
                 $this->classLoader->getPrefixes(),
                 new Psr0NameInflector(),
-            ]
+            ],
         ];
     }
 
@@ -52,7 +51,7 @@ class ComposerClassToFile implements ClassToFile
 
         foreach ($files as $file) {
             $relPath = $inflector->inflectToRelativePath($prefix, $className);
-            $candidates[] = FilePath::fromParts([ $file, $relPath ]);
+            $candidates[] = FilePath::fromParts([$file, $relPath]);
         }
     }
 
@@ -69,6 +68,7 @@ class ComposerClassToFile implements ClassToFile
                         'Composer mapped directory "%s" does not exist', $file
                     ));
                 }
+
                 return realpath($file);
             }, $files);
 

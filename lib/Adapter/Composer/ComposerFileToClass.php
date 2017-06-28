@@ -3,11 +3,8 @@
 namespace DTL\ClassFileConverter\Adapter\Composer;
 
 use Composer\Autoload\ClassLoader;
-use DTL\ClassFileConverter\Domain\ClassName;
 use DTL\ClassFileConverter\Domain\FilePath;
-use DTL\ClassFileConverter\Domain\ClassToFile;
 use DTL\ClassFileConverter\Domain\FileToClass;
-use DTL\ClassFileConverter\Domain\FilePathCandidates;
 use DTL\ClassFileConverter\Domain\ClassNameCandidates;
 
 final class ComposerFileToClass implements FileToClass
@@ -50,12 +47,12 @@ final class ComposerFileToClass implements FileToClass
         return [
             [
                 $this->classLoader->getPrefixesPsr4(),
-                new Psr4NameInflector()
+                new Psr4NameInflector(),
             ],
             [
                 $this->classLoader->getPrefixes(),
                 new Psr0NameInflector(),
-            ]
+            ],
         ];
     }
 

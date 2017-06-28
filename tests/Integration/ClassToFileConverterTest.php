@@ -2,7 +2,6 @@
 
 namespace DTL\ClassFileConverter\Tests\Integration;
 
-use DTL\ClassFileConverter\Tests\Integration\IntegrationTestCase;
 use DTL\ClassFileConverter\ClassToFileConverter;
 
 /**
@@ -14,7 +13,7 @@ class ClassToFileConverterTest extends IntegrationTestCase
 
     public function setUp()
     {
-        $this->classLoader = require(__DIR__ . '/../../vendor/autoload.php');
+        $this->classLoader = require __DIR__.'/../../vendor/autoload.php';
     }
 
     /**
