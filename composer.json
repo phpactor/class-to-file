@@ -1,5 +1,5 @@
 {
-    "name": "dtl/class-to-file",
+    "name": "dantleech/class-to-file",
     "description": "Library to covert class names to file paths and vice-versa",
     "license": "MIT",
     "authors": [
