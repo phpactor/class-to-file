@@ -2,5 +2,4 @@ vendor/
 composer.lock
 phpunit.xml
 composer.phar
-tests/Integration/Composer/project/composer.json
-tests/Integration/Composer/project/composer.lock
+tests/Integration\workspace
