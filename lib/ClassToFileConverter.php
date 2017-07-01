@@ -12,6 +12,8 @@ use DTL\ClassFileConverter\Domain\ClassNameCandidates;
 use Composer\Autoload\ClassLoader;
 use DTL\ClassFileConverter\Domain\ChainClassToFile;
 use DTL\ClassFileConverter\Domain\ChainFileToClass;
+use DTL\ClassFileConverter\Domain\ClassToFile;
+use DTL\ClassFileConverter\Domain\FileToClass;
 
 /**
  * Facade for the library.
@@ -25,17 +27,15 @@ final class ClassToFileConverter
         $this->converter = $converter;
     }
 
-    public static function fromComposerAutoloader(ClassLoader $classLoader)
+    public static function fromComposerAutoloader(ClassLoader $classLoader): ClassToFileFileToClass
     {
-        return new self(
-            new ClassToFileFileToClass(
-                new ComposerClassToFile($classLoader),
-                new ComposerFileToClass($classLoader)
-            )
+        return  new ClassToFileFileToClass(
+            new ComposerClassToFile($classLoader),
+            new ComposerFileToClass($classLoader)
         );
     }
 
-    public static function fromComposerAutoloaders(array $classLoaders)
+    public static function fromComposerAutoloaders(array $classLoaders): ClassToFileFileToClass
     {
         $classToFiles = $fileToClasses = [];
         foreach ($classLoaders as $classLoader) {
@@ -45,30 +45,9 @@ final class ClassToFileConverter
             $fileToClasses[] = new ComposerFileToClass($classLoader);
         }
 
-        return new self(
-            new ClassToFileFileToClass(
-                new ChainClassToFile($classToFiles),
-                new ChainFileToClass($fileToClasses)
-            )
+        return new ClassToFileFileToClass(
+            new ChainClassToFile($classToFiles),
+            new ChainFileToClass($fileToClasses)
         );
-    }
-
-    /**
-     * Convert a fully-qualified class name to a list of file paths
-     * which may contain it, with the most likely file path being
-     * the first in the list.
-     */
-    public function classToFileCandidates(string $classFullName): FilePathCandidates
-    {
-        return $this->converter->classToFileCandidates(ClassName::fromString($classFullName));
-    }
-
-    /**
-     * Convert an absolute file path to a list of class names which it could
-     * represent.
-     */
-    public function fileToClassCandidates(string $filePath): ClassNameCandidates
-    {
-        return $this->converter->fileToClassCandidates(FilePath::fromString($filePath));
     }
 }

@@ -3,6 +3,9 @@
 namespace DTL\ClassFileConverter\Tests\Integration;
 
 use DTL\ClassFileConverter\ClassToFileConverter;
+use DTL\ClassFileConverter\Domain\FilePath;
+use DTL\ClassFileConverter\Domain\ClassName;
+
 
 /**
  * @runTestsInSeparateProcesses
@@ -22,12 +25,12 @@ class ClassToFileConverterTest extends IntegrationTestCase
     public function testCreateForComposer()
     {
         $converter = ClassToFileConverter::fromComposerAutoloader($this->classLoader);
-        $candidates = $converter->fileToClassCandidates(__FILE__);
+        $candidates = $converter->fileToClassCandidates(FilePath::fromString(__FILE__));
         $this->assertEquals(
             __CLASS__, (string) $candidates->best()
         );
 
-        $candidates = $converter->classToFileCandidates(__CLASS__);
+        $candidates = $converter->classToFileCandidates(ClassName::fromString(__CLASS__));
         $this->assertEquals(
             __FILE__, (string) $candidates->best()
         );
@@ -39,12 +42,12 @@ class ClassToFileConverterTest extends IntegrationTestCase
     public function testCreateForComposers()
     {
         $converter = ClassToFileConverter::fromComposerAutoloaders([$this->classLoader]);
-        $candidates = $converter->fileToClassCandidates(__FILE__);
+        $candidates = $converter->fileToClassCandidates(FilePath::fromString(__FILE__));
         $this->assertEquals(
             __CLASS__, (string) $candidates->best()
         );
 
-        $candidates = $converter->classToFileCandidates(__CLASS__);
+        $candidates = $converter->classToFileCandidates(ClassName::fromString(__CLASS__));
         $this->assertEquals(
             __FILE__, (string) $candidates->best()
         );
