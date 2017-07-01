@@ -2,7 +2,7 @@
 
 namespace DTL\ClassFileConverter\Domain;
 
-final class ClassToFileFileToClass
+final class ClassToFileFileToClass implements ClassToFile, FileToClass
 {
     private $classToFile;
     private $fileToClass;
