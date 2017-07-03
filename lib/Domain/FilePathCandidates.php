@@ -35,6 +35,12 @@ final class FilePathCandidates implements \IteratorAggregate
 
     public function best(): FilePath
     {
+        if (empty($this->filePaths)) {
+            throw new \RuntimeException(
+                'There are no file path candidates'
+            );
+        }
+
         return reset($this->filePaths);
     }
 
