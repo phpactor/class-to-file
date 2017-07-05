@@ -35,6 +35,10 @@ class ComposerClassToFile implements ClassToFile
     {
         return [
             [
+                $this->classLoader->getClassMap(),
+                new ClassmapNameInflector(),
+            ],
+            [
                 $this->classLoader->getPrefixesPsr4(),
                 new Psr4NameInflector(),
             ],
@@ -50,8 +54,7 @@ class ComposerClassToFile implements ClassToFile
         list($prefix, $files) = $this->getFileCandidates($className, $prefixes);
 
         foreach ($files as $file) {
-            $relPath = $inflector->inflectToRelativePath($prefix, $className);
-            $candidates[] = FilePath::fromParts([$file, $relPath]);
+            $candidates[] = $inflector->inflectToRelativePath($prefix, $className, $file);
         }
     }
 

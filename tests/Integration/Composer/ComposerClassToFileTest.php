@@ -27,6 +27,15 @@ class ComposerClassToFileTest extends ComposerTestCase
     }
 
     /**
+     * @testdox PSR-4 class in dev namespace
+     */
+    public function testPsr4Dev()
+    {
+        $this->loadExample('psr4-dev.json');
+        $this->assertClassNameToFilePath('Acme\\Dev\\Foo\\Class', ['psr4-dev/Foo/Class.php']);
+    }
+
+    /**
      * @testdox PSR-4 multiple matching prefixes
      */
     public function testPsr4MultipleMatches()
@@ -60,6 +69,18 @@ class ComposerClassToFileTest extends ComposerTestCase
     {
         $this->loadExample('psr0-psr4.json');
         $this->assertClassNameToFilePath('Acme\\Test\\Class', ['psr4/Class.php', 'psr0/Acme/Test/Class.php']);
+    }
+
+    /**
+     * @testdox Loads from classmap
+     */
+    public function testClassmap()
+    {
+        $this->loadExample('classmap.json');
+        $this->assertClassNameToFilePath(
+            'Random\\Name\\Generator',
+            ['classmap/Acme/Post.php']
+        );
     }
 
     private function assertClassNameToFilePath($className, array $filePaths)

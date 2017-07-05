@@ -1,0 +1,16 @@
+{
+    "name": "dantleech/basic",
+    "authors": [
+        {
+            "name": "dantleech",
+            "email": "dan.t.leech@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "classmap": [
+            "classmap/"
+        ]
+    }
+}
+
