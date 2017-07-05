@@ -29,7 +29,7 @@ final class ComposerFileToClass implements FileToClass
 
         $classNames = [];
 
-        foreach ($this->getStrategies() as $prefixes => $strategy) {
+        foreach ($this->getStrategies() as $strategy) {
             list($prefixes, $inflector) = $strategy;
             $candidates = $this->populateCandidates($filePath, $prefixes);
 
@@ -46,6 +46,10 @@ final class ComposerFileToClass implements FileToClass
     {
         return [
             [
+                $this->classLoader->getClassMap(),
+                new ClassmapNameInflector(),
+            ],
+            [
                 $this->classLoader->getPrefixesPsr4(),
                 new Psr4NameInflector(),
             ],
@@ -60,6 +64,7 @@ final class ComposerFileToClass implements FileToClass
     {
         $candidates = [];
         foreach ($prefixes as $classPrefix => $pathPrefixes) {
+
             $pathPrefixes = (array) $pathPrefixes;
 
             // remove any relativeness from the paths
@@ -71,6 +76,13 @@ final class ComposerFileToClass implements FileToClass
             }, $pathPrefixes);
 
             foreach ($pathPrefixes as $pathPrefix) {
+
+                if ((string) $filePath == $pathPrefix) {
+                    $candidates[] = [ $pathPrefix, $classPrefix ];
+                    continue;
+                }
+
+
                 if (strpos($filePath, $pathPrefix) !== 0) {
                     continue;
                 }

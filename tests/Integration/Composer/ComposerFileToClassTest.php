@@ -76,6 +76,19 @@ class ComposerFileToClassTest extends ComposerTestCase
         ]);
     }
 
+    /**
+     * @testdox Loads from classmap
+     */
+    public function testClassmap()
+    {
+        $this->loadExample('classmap.json');
+        $this->assertFilePathToClassName(
+            '/classmap/Acme/Post.php',
+            [ 'Random\\Name\\Generator' ]
+        );
+    }
+
+
     private function assertFilePathToClassName($filePath, array $classNames)
     {
         $converter = new ComposerFileToClass($this->getClassLoader());

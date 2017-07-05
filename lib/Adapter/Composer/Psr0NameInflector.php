@@ -7,9 +7,10 @@ use DTL\ClassFileConverter\Domain\FilePath;
 
 final class Psr0NameInflector implements NameInflector
 {
-    public function inflectToRelativePath(string $prefix, ClassName $className): string
+    public function inflectToRelativePath(string $prefix, ClassName $className, string $mappedPath): FilePath
     {
-        return str_replace('\\', '/', $className).'.php';
+        $relativePath = str_replace('\\', '/', $className).'.php';
+        return FilePath::fromParts([$mappedPath, $relativePath]);
     }
 
     public function inflectToClassName(FilePath $filePath, string $pathPrefix, string $classPrefix): ClassName

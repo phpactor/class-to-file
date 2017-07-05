@@ -1,0 +1,20 @@
+{
+    "name": "dantleech/basic",
+    "authors": [
+        {
+            "name": "dantleech",
+            "email": "dan.t.leech@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Acme\\Test\\": "psr4/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Acme\\Dev\\": "psr4-dev/"
+        }
+    }
+}
