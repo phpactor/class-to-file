@@ -14,10 +14,6 @@ final class ClassmapNameInflector implements NameInflector
 
     public function inflectToClassName(FilePath $filePath, string $pathPrefix, string $classPrefix): ClassName
     {
-        $className = substr($filePath, strlen($pathPrefix) + 1);
-        $className = str_replace('/', '\\', $className);
-        $className = preg_replace('{\.(.+)$}', '', $className);
-
-        return ClassName::fromString($className);
+        return ClassName::fromString($classPrefix);
     }
 }

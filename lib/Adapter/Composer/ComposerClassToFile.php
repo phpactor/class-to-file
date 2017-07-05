@@ -35,16 +35,16 @@ class ComposerClassToFile implements ClassToFile
     {
         return [
             [
-                $this->classLoader->getClassMap(),
-                new ClassmapNameInflector(),
-            ],
-            [
                 $this->classLoader->getPrefixesPsr4(),
                 new Psr4NameInflector(),
             ],
             [
                 $this->classLoader->getPrefixes(),
                 new Psr0NameInflector(),
+            ],
+            [
+                $this->classLoader->getClassMap(),
+                new ClassmapNameInflector(),
             ],
         ];
     }
