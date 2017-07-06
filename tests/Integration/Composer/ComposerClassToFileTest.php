@@ -1,11 +1,11 @@
 <?php
 
-namespace DTL\ClassFileConverter\Tests\Integration\Composer;
+namespace Phpactor\ClassFileConverter\Tests\Integration\Composer;
 
-use DTL\ClassFileConverter\Domain\FilePath;
-use DTL\ClassFileConverter\Domain\ClassName;
-use DTL\ClassFileConverter\Domain\FilePathCandidates;
-use DTL\ClassFileConverter\Adapter\Composer\ComposerClassToFile;
+use Phpactor\ClassFileConverter\Domain\FilePath;
+use Phpactor\ClassFileConverter\Domain\ClassName;
+use Phpactor\ClassFileConverter\Domain\FilePathCandidates;
+use Phpactor\ClassFileConverter\Adapter\Composer\ComposerClassToFile;
 
 /**
  * @runTestsInSeparateProcesses

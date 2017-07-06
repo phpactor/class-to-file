@@ -1,15 +1,15 @@
 <?php
 
-namespace DTL\ClassFileConverter\Tests\Unit;
+namespace Phpactor\ClassFileConverter\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use DTL\ClassFileConverter\Domain\ClassToFile;
-use DTL\ClassFileConverter\Domain\ClassToFileFileToClass;
-use DTL\ClassFileConverter\Domain\ClassName;
-use DTL\ClassFileConverter\Domain\FileToClass;
-use DTL\ClassFileConverter\Domain\FilePathCandidates;
-use DTL\ClassFileConverter\Domain\ClassNameCandidates;
-use DTL\ClassFileConverter\Domain\FilePath;
+use Phpactor\ClassFileConverter\Domain\ClassToFile;
+use Phpactor\ClassFileConverter\Domain\ClassToFileFileToClass;
+use Phpactor\ClassFileConverter\Domain\ClassName;
+use Phpactor\ClassFileConverter\Domain\FileToClass;
+use Phpactor\ClassFileConverter\Domain\FilePathCandidates;
+use Phpactor\ClassFileConverter\Domain\ClassNameCandidates;
+use Phpactor\ClassFileConverter\Domain\FilePath;
 
 class CompositeTransformerTest extends TestCase
 {

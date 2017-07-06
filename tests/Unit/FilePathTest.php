@@ -1,9 +1,9 @@
 <?php
 
-namespace DTL\ClassFileConverter\Tests\Unit;
+namespace Phpactor\ClassFileConverter\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use DTL\ClassFileConverter\Domain\FilePath;
+use Phpactor\ClassFileConverter\Domain\FilePath;
 
 class FilePathTest extends TestCase
 {

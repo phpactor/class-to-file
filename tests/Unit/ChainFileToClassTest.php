@@ -1,13 +1,13 @@
 <?php
 
-namespace DTL\ClassFileConverter\Tests\Unit;
+namespace Phpactor\ClassFileConverter\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use DTL\ClassFileConverter\Domain\FileToClass;
-use DTL\ClassFileConverter\Domain\ChainFileToClass;
-use DTL\ClassFileConverter\Domain\ClassNameCandidates;
-use DTL\ClassFileConverter\Domain\ClassName;
-use DTL\ClassFileConverter\Domain\FilePath;
+use Phpactor\ClassFileConverter\Domain\FileToClass;
+use Phpactor\ClassFileConverter\Domain\ChainFileToClass;
+use Phpactor\ClassFileConverter\Domain\ClassNameCandidates;
+use Phpactor\ClassFileConverter\Domain\ClassName;
+use Phpactor\ClassFileConverter\Domain\FilePath;
 
 class ChainFileToClassTest extends TestCase
 {

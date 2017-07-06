@@ -1,6 +1,6 @@
 <?php
 
-namespace DTL\ClassFileConverter\Domain;
+namespace Phpactor\ClassFileConverter\Domain;
 
 final class ClassNameCandidates implements \IteratorAggregate
 {

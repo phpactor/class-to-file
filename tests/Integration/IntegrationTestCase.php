@@ -1,6 +1,6 @@
 <?php
 
-namespace DTL\ClassFileConverter\Tests\Integration;
+namespace Phpactor\ClassFileConverter\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Filesystem\Filesystem;

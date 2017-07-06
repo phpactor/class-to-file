@@ -1,10 +1,10 @@
 <?php
 
-namespace DTL\ClassFileConverter\Tests\Integration;
+namespace Phpactor\ClassFileConverter\Tests\Integration;
 
-use DTL\ClassFileConverter\ClassToFileConverter;
-use DTL\ClassFileConverter\Domain\FilePath;
-use DTL\ClassFileConverter\Domain\ClassName;
+use Phpactor\ClassFileConverter\ClassToFileConverter;
+use Phpactor\ClassFileConverter\Domain\FilePath;
+use Phpactor\ClassFileConverter\Domain\ClassName;
 
 
 /**

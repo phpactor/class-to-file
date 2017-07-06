@@ -1,10 +1,10 @@
 <?php
 
-namespace DTL\ClassFileConverter\Tests\Unit;
+namespace Phpactor\ClassFileConverter\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use DTL\ClassFileConverter\Domain\ClassName;
-use DTL\ClassFileConverter\Domain\ClassNameCandidates;
+use Phpactor\ClassFileConverter\Domain\ClassName;
+use Phpactor\ClassFileConverter\Domain\ClassNameCandidates;
 
 class ClassNameCandidatesTest extends TestCase
 {

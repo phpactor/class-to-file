@@ -1,9 +1,9 @@
 <?php
 
-namespace DTL\ClassFileConverter\Adapter\Composer;
+namespace Phpactor\ClassFileConverter\Adapter\Composer;
 
-use DTL\ClassFileConverter\Domain\ClassName;
-use DTL\ClassFileConverter\Domain\FilePath;
+use Phpactor\ClassFileConverter\Domain\ClassName;
+use Phpactor\ClassFileConverter\Domain\FilePath;
 
 interface NameInflector
 {

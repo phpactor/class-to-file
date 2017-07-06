@@ -1,8 +1,8 @@
 <?php
 
-namespace DTL\ClassFileConverter\Tests\Integration\Composer;
+namespace Phpactor\ClassFileConverter\Tests\Integration\Composer;
 
-use DTL\ClassFileConverter\Tests\Integration\IntegrationTestCase;
+use Phpactor\ClassFileConverter\Tests\Integration\IntegrationTestCase;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**

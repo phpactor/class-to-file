@@ -1,19 +1,19 @@
 <?php
 
-namespace DTL\ClassFileConverter;
+namespace Phpactor\ClassFileConverter;
 
-use DTL\ClassFileConverter\Adapter\Composer\ComposerFileToClass;
-use DTL\ClassFileConverter\Adapter\Composer\ComposerClassToFile;
-use DTL\ClassFileConverter\Domain\ClassToFileFileToClass;
-use DTL\ClassFileConverter\Domain\FilePath;
-use DTL\ClassFileConverter\Domain\ClassName;
-use DTL\ClassFileConverter\Domain\FilePathCandidates;
-use DTL\ClassFileConverter\Domain\ClassNameCandidates;
+use Phpactor\ClassFileConverter\Adapter\Composer\ComposerFileToClass;
+use Phpactor\ClassFileConverter\Adapter\Composer\ComposerClassToFile;
+use Phpactor\ClassFileConverter\Domain\ClassToFileFileToClass;
+use Phpactor\ClassFileConverter\Domain\FilePath;
+use Phpactor\ClassFileConverter\Domain\ClassName;
+use Phpactor\ClassFileConverter\Domain\FilePathCandidates;
+use Phpactor\ClassFileConverter\Domain\ClassNameCandidates;
 use Composer\Autoload\ClassLoader;
-use DTL\ClassFileConverter\Domain\ChainClassToFile;
-use DTL\ClassFileConverter\Domain\ChainFileToClass;
-use DTL\ClassFileConverter\Domain\ClassToFile;
-use DTL\ClassFileConverter\Domain\FileToClass;
+use Phpactor\ClassFileConverter\Domain\ChainClassToFile;
+use Phpactor\ClassFileConverter\Domain\ChainFileToClass;
+use Phpactor\ClassFileConverter\Domain\ClassToFile;
+use Phpactor\ClassFileConverter\Domain\FileToClass;
 
 /**
  * Facade for the library.

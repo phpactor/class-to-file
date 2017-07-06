@@ -1,6 +1,6 @@
 <?php
 
-namespace DTL\ClassFileConverter\Domain;
+namespace Phpactor\ClassFileConverter\Domain;
 
 class ChainClassToFile implements ClassToFile
 {
