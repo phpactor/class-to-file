@@ -7,6 +7,8 @@ use Composer\Autoload\ClassLoader;
 use Phpactor\ClassFileConverter\Domain\ClassName;
 use Phpactor\ClassFileConverter\Domain\FilePath;
 use Phpactor\ClassFileConverter\Domain\FilePathCandidates;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 
 class ComposerClassToFile implements ClassToFile
 {
@@ -15,9 +17,15 @@ class ComposerClassToFile implements ClassToFile
      */
     private $classLoader;
 
-    public function __construct(ClassLoader $classLoader)
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    public function __construct(ClassLoader $classLoader, LoggerInterface $logger = null)
     {
         $this->classLoader = $classLoader;
+        $this->logger = $logger ?: new NullLogger();
     }
 
     public function classToFileCandidates(ClassName $className): FilePathCandidates
@@ -67,9 +75,11 @@ class ComposerClassToFile implements ClassToFile
             $files = (array) $files;
             $files = array_map(function ($file) {
                 if (!file_exists($file)) {
-                    throw new \RuntimeException(sprintf(
+                    $this->logger->warning(sprintf(
                         'Composer mapped directory "%s" does not exist', $file
                     ));
+
+                    return $file;
                 }
 
                 return realpath($file);

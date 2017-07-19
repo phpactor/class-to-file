@@ -1,0 +1,15 @@
+{
+    "name": "dantleech/basic",
+    "authors": [
+        {
+            "name": "dantleech",
+            "email": "dan.t.leech@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Acme\\": "_invalid__"
+        }
+    }
+}

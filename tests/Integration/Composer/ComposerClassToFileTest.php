@@ -6,15 +6,28 @@ use Phpactor\ClassFileConverter\Domain\FilePath;
 use Phpactor\ClassFileConverter\Domain\ClassName;
 use Phpactor\ClassFileConverter\Domain\FilePathCandidates;
 use Phpactor\ClassFileConverter\Adapter\Composer\ComposerClassToFile;
+use Psr\Log\LoggerInterface;
+use Prophecy\Argument;
 
 /**
  * @runTestsInSeparateProcesses
  */
 class ComposerClassToFileTest extends ComposerTestCase
 {
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    /**
+     * @var ComposerClassToFile
+     */
+    private $converter;
+
     public function setUp()
     {
         $this->initWorkspace();
+        $this->logger = $this->prophesize(LoggerInterface::class);
     }
 
     /**
@@ -83,13 +96,27 @@ class ComposerClassToFileTest extends ComposerTestCase
         );
     }
 
-    private function assertClassNameToFilePath($className, array $filePaths)
+    /**
+     * @testdox Ignores invalid directories.
+     */
+    public function testIgnoresInvalidDirs()
+    {
+        $this->loadExample('invalid-dir.json');
+        $this->logger->warning(Argument::containingString('Composer mapped directory'))->shouldBeCalledTimes(1);
+
+        $this->assertClassNameToFilePath(
+            'Acme\\Foo\\Generator',
+            ['vendor/composer/../../_invalid__/Foo/Generator.php']
+        );
+    }
+
+    private function assertClassNameToFilePath($className, array $filePaths, array $messages = [])
     {
         $filePaths = array_map(function ($filePath) {
             return FilePath::fromParts([$this->workspacePath(), $filePath]);
         }, $filePaths);
 
-        $converter = new ComposerClassToFile($this->getClassLoader());
+        $converter = new ComposerClassToFile($this->getClassLoader(), $this->logger->reveal());
         $this->assertEquals(
             FilePathCandidates::fromFilePaths($filePaths),
             $converter->classToFileCandidates(ClassName::fromString($className))
