@@ -54,6 +54,15 @@ class ComposerClassToFile implements ClassToFile
                 $this->classLoader->getClassMap(),
                 new ClassmapNameInflector(),
             ],
+            [
+                $this->classLoader->getFallbackDirs(),
+                new Psr0NameInflector(),
+            ],
+            [
+                $this->classLoader->getFallbackDirsPsr4(),
+                // PSR0 name inflector works here as there is no prefix
+                new Psr0NameInflector(),
+            ],
         ];
     }
 
@@ -85,7 +94,7 @@ class ComposerClassToFile implements ClassToFile
                 return realpath($file);
             }, $files);
 
-            if ($className->beginsWith($prefix)) {
+            if (empty($prefix) || $className->beginsWith($prefix)) {
                 $length = strlen($prefix);
 
                 if ($length > $bestLength) {

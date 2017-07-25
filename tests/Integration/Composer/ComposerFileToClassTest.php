@@ -77,6 +77,28 @@ class ComposerFileToClassTest extends ComposerTestCase
     }
 
     /**
+     * @testdox PSR-0 no prefix
+     */
+    public function testPsr0Fallback()
+    {
+        $this->loadExample('psr0-fallback.json');
+        $this->assertFilePathToClassName('/psr0/Acme/Test/Class.php', [
+            'Acme\\Test\\Class',
+        ]);
+    }
+
+    /**
+     * @testdox PSR-4 no fallback
+     */
+    public function testPsr4Fallback()
+    {
+        $this->loadExample('psr4-fallback.json');
+        $this->assertFilePathToClassName('/psr4/Acme/Test/Class.php', [
+            'Acme\\Test\\Class',
+        ]);
+    }
+
+    /**
      * @testdox Loads from classmap
      */
     public function testClassmap()
