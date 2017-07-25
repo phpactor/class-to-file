@@ -16,6 +16,11 @@ final class Psr4NameInflector implements NameInflector
 
     public function inflectToClassName(FilePath $filePath, string $pathPrefix, string $classPrefix): ClassName
     {
+        // class prefix is "0" when prefix is "" (fallback) in composer.json
+        if ('0' == (string) $classPrefix) {
+            $classPrefix = '';
+        }
+
         $className = substr($filePath, strlen($pathPrefix) + 1);
         $className = str_replace('/', '\\', $className);
         $className = $classPrefix.$className;

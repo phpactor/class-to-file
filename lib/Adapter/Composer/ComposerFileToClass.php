@@ -57,6 +57,14 @@ final class ComposerFileToClass implements FileToClass
                 $this->classLoader->getPrefixes(),
                 new Psr0NameInflector(),
             ],
+            [
+                $this->classLoader->getFallbackDirs(),
+                new Psr0NameInflector(),
+            ],
+            [
+                $this->classLoader->getFallbackDirsPsr4(),
+                new Psr4NameInflector(),
+            ],
         ];
     }
 
