@@ -27,6 +27,15 @@ class ComposerFileToClassTest extends ComposerTestCase
     }
 
     /**
+     * @testdox PSR-4 file with relative path components
+     */
+    public function testPsr4WithRelativePathComponents()
+    {
+        $this->loadExample('psr4-simple.json');
+        $this->assertFilePathToClassName('/psr4/Foo/../Foo/Class.php', ['Acme\\Test\\Foo\\Class']);
+    }
+
+    /**
      * @testdox PSR-4 multiple matching prefixes
      */
     public function testPsr4MultipleMatches()

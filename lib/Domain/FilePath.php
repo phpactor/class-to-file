@@ -2,6 +2,8 @@
 
 namespace Phpactor\ClassFileConverter\Domain;
 
+use Webmozart\PathUtil\Path;
+
 final class FilePath
 {
     private $path;
@@ -21,9 +23,10 @@ final class FilePath
         return $this->path;
     }
 
-    public static function fromString($string)
+    public static function fromString($path)
     {
-        return new self($string);
+        $path = Path::canonicalize($path);
+        return new self($path);
     }
 
     public static function fromParts(array $parts)
