@@ -119,6 +119,18 @@ class ComposerFileToClassTest extends ComposerTestCase
         );
     }
 
+    /**K
+     * @testdox Loads with non-existing directory
+     */
+    public function testNonExistingDirectory()
+    {
+        $this->loadExample('nonexisting.json');
+        $this->assertFilePathToClassName(
+            '/nonexisting/Post.php',
+            [ 'Acme\\Test\\Post' ]
+        );
+    }
+
 
     private function assertFilePathToClassName($filePath, array $classNames)
     {

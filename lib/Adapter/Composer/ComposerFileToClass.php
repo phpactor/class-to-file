@@ -6,6 +6,7 @@ use Composer\Autoload\ClassLoader;
 use Phpactor\ClassFileConverter\Domain\FilePath;
 use Phpactor\ClassFileConverter\Domain\FileToClass;
 use Phpactor\ClassFileConverter\Domain\ClassNameCandidates;
+use Webmozart\PathUtil\Path;
 
 final class ComposerFileToClass implements FileToClass
 {
@@ -80,7 +81,7 @@ final class ComposerFileToClass implements FileToClass
             // TODO: realpath will return void if the path does not exist
             //       we should not depend on the file path existing.
             $pathPrefixes = array_map(function ($pathPrefix) {
-                return realpath($pathPrefix);
+                return Path::canonicalize($pathPrefix);
             }, $pathPrefixes);
 
             foreach ($pathPrefixes as $pathPrefix) {
