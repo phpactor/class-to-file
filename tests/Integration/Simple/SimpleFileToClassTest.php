@@ -9,7 +9,7 @@ use Phpactor\ClassFileConverter\Domain\FilePath;
 use Phpactor\ClassFileConverter\Domain\ClassNameCandidates;
 use Phpactor\ClassFileConverter\Domain\ClassName;
 
-class SimpleFileToClassTest extends IntegrationTestCase
+class SimpleFileToClassTest extends SimpleTestCase
 {
     /**
      * @var SimpleFileToClass
@@ -19,9 +19,7 @@ class SimpleFileToClassTest extends IntegrationTestCase
     public function setUp()
     {
         $this->initWorkspace();
-        $projectPath = __DIR__.'/project';
-        $filesystem = new Filesystem();
-        $filesystem->mirror($projectPath, $this->workspacePath());
+        $this->copyProject();
         $this->fileToClass = new SimpleFileToClass();
     }
 
