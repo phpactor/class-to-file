@@ -4,6 +4,11 @@ namespace Phpactor\ClassFileConverter\Domain;
 
 class ChainFileToClass implements FileToClass
 {
+    /**
+     * @var array
+     */
+    private $converters = [];
+
     public function __construct(array $converters)
     {
         foreach ($converters as $converter) {
