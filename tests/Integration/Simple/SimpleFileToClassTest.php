@@ -38,4 +38,11 @@ class SimpleFileToClassTest extends SimpleTestCase
 
         $this->assertEquals(ClassNameCandidates::fromClassNames([]), $candidates);
     }
+
+    public function testFileToClassNotExisting()
+    {
+        $candidates = $this->fileToClass->fileToClassCandidates(FilePath::fromString(__DIR__ . '/project/notexist/NotExist.php'));
+
+        $this->assertEquals(ClassNameCandidates::fromClassNames([]), $candidates);
+    }
 }

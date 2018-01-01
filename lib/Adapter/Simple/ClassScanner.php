@@ -11,6 +11,10 @@ class ClassScanner
 {
     public function getClassNameFromFile($file)
     {
+        if (!file_exists($file)) {
+            return null;
+        }
+
         $fp = fopen($file, 'r');
 
         $class = $namespace = $buffer = '';
@@ -54,7 +58,7 @@ class ClassScanner
         }
 
         if (!trim($class)) {
-            return;
+            return null;
         }
 
         fclose($fp);
