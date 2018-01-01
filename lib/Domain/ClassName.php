@@ -30,7 +30,11 @@ final class ClassName
 
     public function name()
     {
-        return substr($this->fullyQualifiedName, strrpos($this->fullyQualifiedName, '\\') + 1);
+        $pos = strrpos($this->fullyQualifiedName, '\\');
+        if (false === $pos) {
+            return $this->fullyQualifiedName;
+        }
+        return substr($this->fullyQualifiedName, $pos + 1);
     }
 
     public function beginsWith($prefix)

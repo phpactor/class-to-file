@@ -41,4 +41,16 @@ class ClassNameTest extends TestCase
             ],
         ];
     }
+
+    public function testName()
+    {
+        $class = ClassName::fromString('Foobar\\Barfoo');
+        $this->assertEquals('Barfoo', $class->name());
+    }
+
+    public function testNameShort()
+    {
+        $class = ClassName::fromString('Barfoo');
+        $this->assertEquals('Barfoo', $class->name());
+    }
 }

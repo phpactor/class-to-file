@@ -28,11 +28,12 @@ class SimpleClassToFile implements ClassToFile
     public function classToFileCandidates(ClassName $className): FilePathCandidates
     {
         $candidates = [];
-        foreach (glob(sprintf(
+        $pattern = sprintf(
             '%s/**/%s.php',
             $this->cwd,
             $className->name()
-        )) as $phpFile) {
+        );
+        foreach (glob($pattern) as $phpFile) {
             if (ClassName::fromString(
                 $this->classScanner->getClassNameFromFile($phpFile)
             ) == $className) {
