@@ -33,6 +33,15 @@ class SimpleClassToFileTest extends SimpleTestCase
         ]), $candidates);
     }
 
+    public function testClassToFileDeeper()
+    {
+        $candidates = $this->classToFile->classToFileCandidates(ClassName::fromString('Acme\\NamespaceHere\\Hallo'));
+
+        $this->assertEquals(FilePathCandidates::fromFilePaths([
+            FilePath::fromString(__DIR__ . '/../workspace/lib/NamespaceHere/Hallo.php')
+        ]), $candidates);
+    }
+
     public function testClassToNoCandidates()
     {
         $candidates = $this->classToFile->classToFileCandidates(ClassName::fromString('Zog\\Foobar'));
