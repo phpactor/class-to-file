@@ -6,6 +6,9 @@ use Phpactor\ClassFileConverter\Domain\ClassToFile;
 use Phpactor\ClassFileConverter\Domain\FilePathCandidates;
 use Phpactor\ClassFileConverter\Domain\ClassName;
 use Phpactor\ClassFileConverter\Domain\FilePath;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+use RegexIterator;
 
 class SimpleClassToFile implements ClassToFile
 {
@@ -29,15 +32,19 @@ class SimpleClassToFile implements ClassToFile
     {
         $candidates = [];
         $pattern = sprintf(
-            '%s/**/%s.php',
-            $this->cwd,
+            '{^.*/%s.php$}',
             $className->name()
         );
-        foreach (glob($pattern) as $phpFile) {
+
+        $iterator = new RecursiveDirectoryIterator($this->cwd);
+        $iterator = new RecursiveIteratorIterator($iterator);
+        $iterator = new RegexIterator($iterator, $pattern);
+
+        foreach ($iterator as $phpFile) {
             if (ClassName::fromString(
-                $this->classScanner->getClassNameFromFile($phpFile)
+                $this->classScanner->getClassNameFromFile($phpFile->getPathName())
             ) == $className) {
-                $candidates[] = FilePath::fromString($phpFile);
+            $candidates[] = FilePath::fromString($phpFile->getPathName());
             }
         }
 

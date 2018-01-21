@@ -46,7 +46,8 @@ class ClassScanner
                     }
                 }
 
-                if ($tokens[$i][0] === \T_CLASS) {
+                $token = $tokens[$i][0];
+                if ($token === \T_INTERFACE || $token === \T_CLASS || $token === \T_TRAIT) {
                     for ($j = $i + 1; $j < count($tokens); $j++) {
                         if ($tokens[$j][0] === \T_STRING) {
                             $class = $tokens[$i + 2][1];

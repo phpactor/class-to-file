@@ -32,6 +32,24 @@ class SimpleFileToClassTest extends SimpleTestCase
         ]), $candidates);
     }
 
+    public function testFileToInterface()
+    {
+        $candidates = $this->fileToClass->fileToClassCandidates(FilePath::fromString(__DIR__ . '/project/lib/FoobarInterface.php'));
+
+        $this->assertEquals(ClassNameCandidates::fromClassNames([
+            ClassName::fromString('Acme\\FoobarInterface')
+        ]), $candidates);
+    }
+
+    public function testFileToTrait()
+    {
+        $candidates = $this->fileToClass->fileToClassCandidates(FilePath::fromString(__DIR__ . '/project/lib/FoobarTrait.php'));
+
+        $this->assertEquals(ClassNameCandidates::fromClassNames([
+            ClassName::fromString('Acme\\FoobarTrait')
+        ]), $candidates);
+    }
+
     public function testFileToNoCandidates()
     {
         $candidates = $this->fileToClass->fileToClassCandidates(FilePath::fromString(__DIR__ . '/project/lib/NoClasses.php'));
