@@ -9,7 +9,12 @@ final class Psr0NameInflector implements NameInflector
 {
     public function inflectToRelativePath(string $prefix, ClassName $className, string $mappedPath): FilePath
     {
+        if (substr($prefix, -1) !== '\\' && $className->beginsWith($prefix)) {
+            $className = substr($className, strlen($prefix));
+        }
+
         $relativePath = str_replace('\\', '/', $className).'.php';
+
         return FilePath::fromParts([$mappedPath, $relativePath]);
     }
 

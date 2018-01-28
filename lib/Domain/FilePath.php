@@ -10,6 +10,7 @@ final class FilePath
 
     private function __construct(string $path)
     {
+        $path = Path::canonicalize($path);
         $this->path = $path;
     }
 
@@ -25,7 +26,6 @@ final class FilePath
 
     public static function fromString($path)
     {
-        $path = Path::canonicalize($path);
         return new self($path);
     }
 
