@@ -99,8 +99,15 @@ class ComposerClassToFileTest extends ComposerTestCase
     public function testPsr0ShortNamePrefix()
     {
         $this->loadExample('psr0-short-prefix.json');
-        $this->assertClassNameToFilePath('Twig_Extension', [ 'psr0/twig/Extension.php' ]);
+        $this->assertClassNameToFilePath('Twig_Extension', [ 'psr0/twig/Twig/Extension.php' ]);
     }
+
+    public function testPsr0ShortNamePrefix2()
+    {
+        $this->loadExample('psr0-short-prefix.json');
+        $this->assertClassNameToFilePath('Twig_Tests_Extension', [ 'psr0/twig/Twig/Tests/Extension.php' ]);
+    }
+
 
     /**
      * @testdox PSR-4 fallback
