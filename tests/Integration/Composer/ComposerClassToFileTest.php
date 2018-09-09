@@ -51,10 +51,14 @@ class ComposerClassToFileTest extends ComposerTestCase
     /**
      * @testdox PSR-4 multiple matching prefixes
      */
-    public function testPsr4MultipleMatches()
+    public function testPsr4MultipleMatchesLongestPrefixesFirst()
     {
         $this->loadExample('psr4-multiple-matching-prefixes.json');
-        $this->assertClassNameToFilePath('Acme\\Test\\Foo\\Bar\\Class', ['psr4/tests/Class.php']);
+        $this->assertClassNameToFilePath('Acme\\Test\\Foo\\Bar\\Class', [
+            'psr4/tests/Class.php',
+            'psr4/tests/foo/Bar/Class.php',
+            'psr4/Foo/Bar/Class.php'
+        ]);
     }
 
     /**
@@ -81,7 +85,10 @@ class ComposerClassToFileTest extends ComposerTestCase
     public function testPsr0AndPsr4()
     {
         $this->loadExample('psr0-psr4.json');
-        $this->assertClassNameToFilePath('Acme\\Test\\Class', ['psr4/Class.php', 'psr0/Acme/Test/Class.php']);
+        $this->assertClassNameToFilePath('Acme\\Test\\Class', [
+            'psr4/Class.php',
+            'psr0/Acme/Test/Class.php'
+        ]);
     }
 
     /**
@@ -136,7 +143,7 @@ class ComposerClassToFileTest extends ComposerTestCase
     public function testIgnoresInvalidDirs()
     {
         $this->loadExample('invalid-dir.json');
-        $this->logger->warning(Argument::containingString('Composer mapped directory'))->shouldBeCalledTimes(1);
+        $this->logger->warning(Argument::containingString('Composer mapped path'))->shouldBeCalledTimes(1);
 
         $this->assertClassNameToFilePath(
             'Acme\\Foo\\Generator',

@@ -36,6 +36,16 @@ class ComposerClassToFile implements ClassToFile
             $this->resolveFile($candidates, $prefixes, $inflector, $className);
         }
 
+        // order with the longest prefixes first
+        uksort($candidates, function ($prefix1, $prefix2) {
+            return strlen($prefix2) <=> strlen($prefix1);
+        });
+
+        // flatten to a single array
+        $candidates = array_reduce($candidates, function ($candidates, $paths) {
+            return array_merge($candidates, $paths);
+        }, []);
+
         return FilePathCandidates::fromFilePaths($candidates);
     }
 
@@ -68,49 +78,55 @@ class ComposerClassToFile implements ClassToFile
 
     private function resolveFile(&$candidates, array $prefixes, NameInflector $inflector, ClassName $className)
     {
-        list($prefix, $files) = $this->getFileCandidates($className, $prefixes);
+        $fileCandidates = $this->getFileCandidates($className, $prefixes);
 
-        foreach ($files as $file) {
-            $candidates[] = $inflector->inflectToRelativePath($prefix, $className, $file);
+        foreach ($fileCandidates as $prefix => $files) {
+            $prefixCandidates = [];
+            foreach ($files as $file) {
+                $prefixCandidates[] = $inflector->inflectToRelativePath($prefix, $className, $file);
+            }
+
+            if (!isset($candidates[$prefix])) {
+                $candidates[$prefix] = [];
+            }
+
+            $candidates[$prefix] = array_merge($candidates[$prefix], $prefixCandidates);
         }
     }
 
     private function getFileCandidates(ClassName $className, array $prefixes)
     {
-        $bestFiles = [null, []];
-        $bestLength = 0;
+        $candidates = [];
 
-        foreach ($prefixes as $prefix => $files) {
-            $files = (array) $files;
-            $files = array_map(function ($file) {
-                if (!file_exists($file)) {
+        foreach ($prefixes as $prefix => $paths) {
+            $paths = (array) $paths;
+            $paths = array_map(function ($path) {
+                if (!file_exists($path)) {
                     $this->logger->warning(sprintf(
-                        'Composer mapped directory "%s" does not exist', $file
+                        'Composer mapped path "%s" does not exist', $path
                     ));
 
-                    return $file;
+                    return $path;
                 }
 
-                return realpath($file);
-            }, $files);
+                return realpath($path);
+            }, $paths);
 
-            if (empty($prefix) || $className->beginsWith($prefix)) {
-                $length = strlen($prefix);
-
-                if ($length > $bestLength) {
-                    $bestFiles = array($prefix, $files);
-                    $bestLength = $length;
-                }
+            if (is_int($prefix)) {
+                $prefix = '';
             }
+
+            if ($prefix && false === $className->beginsWith($prefix)) {
+                continue;
+            }
+
+            if (!isset($candidates[$prefix])) {
+                $candidates[$prefix] = [];
+            }
+
+            $candidates[$prefix] = array_merge($candidates[$prefix], $paths);
         }
 
-        if (empty($bestFiles)) {
-            throw new \RuntimeException(sprintf(
-                'Could not find matching prefix for class name "%s", is it correctly defined in your composer file?',
-                (string) $className
-            ));
-        }
-
-        return $bestFiles;
+        return $candidates;
     }
 }
