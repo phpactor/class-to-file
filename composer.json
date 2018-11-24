@@ -25,5 +25,10 @@
         "psr-4": {
             "Phpactor\\ClassFileConverter\\Tests\\": "tests/"
         }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
     }
 }
