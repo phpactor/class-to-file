@@ -25,7 +25,7 @@ final class FilePathCandidates implements \IteratorAggregate
 
     public function toArray(): array
     {
-        return $this->filePath;
+        return $this->filePaths;
     }
 
     public function add(FilePath $filePath)

@@ -50,4 +50,17 @@ class FilePathCandidatesTest extends TestCase
         $candidates = FilePathCandidates::fromFilePaths([]);
         $this->assertTrue($candidates->noneFound());
     }
+
+    /**
+     * @testdocs It can to array.
+     */
+    public function testToArray()
+    {
+        $filePaths = [
+            FilePath::fromString('Foobar'),
+        ];
+
+        $candidates = FilePathCandidates::fromFilePaths($filePaths);
+        $this->assertEquals($candidates->toArray(), $filePaths);
+    }
 }
