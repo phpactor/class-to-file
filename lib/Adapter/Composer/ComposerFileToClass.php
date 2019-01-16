@@ -103,6 +103,10 @@ final class ComposerFileToClass implements FileToClass
             }
         }
 
+        usort($candidates, function (array $leftCandidate, array $rightCandidate): int {
+            return strlen($rightCandidate[0]) <=> strlen($leftCandidate[0]);
+        });
+
         return $candidates;
     }
 }
