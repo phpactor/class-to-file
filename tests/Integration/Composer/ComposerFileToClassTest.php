@@ -107,6 +107,16 @@ class ComposerFileToClassTest extends ComposerTestCase
         ]);
     }
 
+    public function testNestedPsr4Directories()
+    {
+        $this->loadExample('psr4-nested.json');
+        $this->assertFilePathToClassName('/psr4/AppBundle/Foo.php', [
+            'AppBundle\\Foo',
+            'App\\AppBundle\\Foo'
+        ]);
+    }
+
+
     /**
      * @testdox Loads from classmap
      */

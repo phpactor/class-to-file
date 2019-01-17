@@ -1,0 +1,16 @@
+{
+    "name": "dantleech/basic",
+    "authors": [
+        {
+            "name": "dantleech",
+            "email": "dan.t.leech@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "psr4/",
+            "AppBundle\\": "psr4/AppBundle/"
+        }
+    }
+}
