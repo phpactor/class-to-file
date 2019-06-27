@@ -5,7 +5,6 @@ namespace Phpactor\ClassFileConverter\Adapter\Composer;
 use Phpactor\ClassFileConverter\Domain\ClassToFile;
 use Composer\Autoload\ClassLoader;
 use Phpactor\ClassFileConverter\Domain\ClassName;
-use Phpactor\ClassFileConverter\Domain\FilePath;
 use Phpactor\ClassFileConverter\Domain\FilePathCandidates;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
@@ -103,7 +102,8 @@ class ComposerClassToFile implements ClassToFile
             $paths = array_map(function ($path) {
                 if (!file_exists($path)) {
                     $this->logger->warning(sprintf(
-                        'Composer mapped path "%s" does not exist', $path
+                        'Composer mapped path "%s" does not exist',
+                        $path
                     ));
 
                     return $path;

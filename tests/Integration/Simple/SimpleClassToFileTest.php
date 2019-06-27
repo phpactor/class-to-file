@@ -2,11 +2,8 @@
 
 namespace Phpactor\ClassFileConverter\Tests\Integration\Simple;
 
-use Phpactor\ClassFileConverter\Tests\Integration\IntegrationTestCase;
-use Symfony\Component\Filesystem\Filesystem;
 use Phpactor\ClassFileConverter\Adapter\Simple\SimpleClassToFile;
 use Phpactor\ClassFileConverter\Domain\FilePath;
-use Phpactor\ClassFileConverter\Domain\ClassNameCandidates;
 use Phpactor\ClassFileConverter\Domain\ClassName;
 use Phpactor\ClassFileConverter\Domain\FilePathCandidates;
 
@@ -29,7 +26,7 @@ class SimpleClassToFileTest extends SimpleTestCase
         $candidates = $this->classToFile->classToFileCandidates(ClassName::fromString('Acme\\Foobar'));
 
         $this->assertEquals(FilePathCandidates::fromFilePaths([
-            FilePath::fromString(__DIR__ . '/../workspace/lib/Foobar.php')
+            FilePath::fromString(__DIR__ . '/../../Workspace/lib/Foobar.php')
         ]), $candidates);
     }
 
@@ -38,7 +35,7 @@ class SimpleClassToFileTest extends SimpleTestCase
         $candidates = $this->classToFile->classToFileCandidates(ClassName::fromString('Acme\\NamespaceHere\\Hallo'));
 
         $this->assertEquals(FilePathCandidates::fromFilePaths([
-            FilePath::fromString(__DIR__ . '/../workspace/lib/NamespaceHere/Hallo.php')
+            FilePath::fromString(__DIR__ . '/../../Workspace/lib/NamespaceHere/Hallo.php')
         ]), $candidates);
     }
 

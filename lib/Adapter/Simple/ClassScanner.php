@@ -2,6 +2,8 @@
 
 namespace Phpactor\ClassFileConverter\Adapter\Simple;
 
+use RuntimeException;
+
 /**
  * Return the class name from a file.
  *
@@ -16,6 +18,13 @@ class ClassScanner
         }
 
         $fp = fopen($file, 'r');
+
+        if (false === $fp) {
+            throw new RuntimeException(sprintf(
+                'Could not open file "%s"',
+                $file
+            ));
+        }
 
         $class = $namespace = $buffer = '';
         $i = 0;

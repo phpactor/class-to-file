@@ -6,7 +6,6 @@ use Phpactor\ClassFileConverter\Domain\FileToClass;
 use Phpactor\ClassFileConverter\Domain\ClassNameCandidates;
 use Phpactor\ClassFileConverter\Domain\FilePath;
 use Phpactor\ClassFileConverter\Domain\ClassName;
-use Phpactor\ClassFileConverter\Adapter\Simple\ClassScanner;
 
 class SimpleFileToClass implements FileToClass
 {

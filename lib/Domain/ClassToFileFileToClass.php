@@ -10,12 +10,12 @@ final class ClassToFileFileToClass implements ClassToFile, FileToClass
     public function __construct(ClassToFile $classToFile, FileToClass $fileToClass)
     {
         $this->classToFile = $classToFile;
-        $this->fileToClassCandidates = $fileToClass;
+        $this->fileToClass = $fileToClass;
     }
 
     public function fileToClassCandidates(FilePath $filePath): ClassNameCandidates
     {
-        return $this->fileToClassCandidates->fileToClassCandidates($filePath);
+        return $this->fileToClass->fileToClassCandidates($filePath);
     }
 
     public function classToFileCandidates(ClassName $className): FilePathCandidates
