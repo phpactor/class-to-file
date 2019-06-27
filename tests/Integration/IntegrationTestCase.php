@@ -19,6 +19,6 @@ abstract class IntegrationTestCase extends TestCase
 
     protected function workspacePath()
     {
-        return __DIR__.'/workspace';
+        return __DIR__.'/../Workspace';
     }
 }

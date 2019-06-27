@@ -26,7 +26,7 @@ class SimpleClassToFileTest extends SimpleTestCase
         $candidates = $this->classToFile->classToFileCandidates(ClassName::fromString('Acme\\Foobar'));
 
         $this->assertEquals(FilePathCandidates::fromFilePaths([
-            FilePath::fromString(__DIR__ . '/../workspace/lib/Foobar.php')
+            FilePath::fromString(__DIR__ . '/../../Workspace/lib/Foobar.php')
         ]), $candidates);
     }
 
@@ -35,7 +35,7 @@ class SimpleClassToFileTest extends SimpleTestCase
         $candidates = $this->classToFile->classToFileCandidates(ClassName::fromString('Acme\\NamespaceHere\\Hallo'));
 
         $this->assertEquals(FilePathCandidates::fromFilePaths([
-            FilePath::fromString(__DIR__ . '/../workspace/lib/NamespaceHere/Hallo.php')
+            FilePath::fromString(__DIR__ . '/../../Workspace/lib/NamespaceHere/Hallo.php')
         ]), $candidates);
     }
 

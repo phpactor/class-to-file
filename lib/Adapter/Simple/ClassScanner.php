@@ -21,7 +21,8 @@ class ClassScanner
 
         if (false === $fp) {
             throw new RuntimeException(sprintf(
-                'Could not open file "%s"', $file
+                'Could not open file "%s"',
+                $file
             ));
         }
 
