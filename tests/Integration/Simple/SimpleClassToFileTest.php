@@ -2,11 +2,8 @@
 
 namespace Phpactor\ClassFileConverter\Tests\Integration\Simple;
 
-use Phpactor\ClassFileConverter\Tests\Integration\IntegrationTestCase;
-use Symfony\Component\Filesystem\Filesystem;
 use Phpactor\ClassFileConverter\Adapter\Simple\SimpleClassToFile;
 use Phpactor\ClassFileConverter\Domain\FilePath;
-use Phpactor\ClassFileConverter\Domain\ClassNameCandidates;
 use Phpactor\ClassFileConverter\Domain\ClassName;
 use Phpactor\ClassFileConverter\Domain\FilePathCandidates;
 

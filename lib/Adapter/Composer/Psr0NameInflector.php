@@ -14,7 +14,7 @@ final class Psr0NameInflector implements NameInflector
             $className = implode('\\', $elements);
         }
 
-        $relativePath = str_replace('\\', '/', $className).'.php';
+        $relativePath = str_replace('\\', '/', (string) $className).'.php';
 
         return FilePath::fromParts([$mappedPath, $relativePath]);
     }

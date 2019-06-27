@@ -44,7 +44,7 @@ class SimpleClassToFile implements ClassToFile
             if (ClassName::fromString(
                 $this->classScanner->getClassNameFromFile($phpFile->getPathName())
             ) == $className) {
-            $candidates[] = FilePath::fromString($phpFile->getPathName());
+                $candidates[] = FilePath::fromString($phpFile->getPathName());
             }
         }
 

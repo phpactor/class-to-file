@@ -73,7 +73,6 @@ final class ComposerFileToClass implements FileToClass
     {
         $candidates = [];
         foreach ($prefixes as $classPrefix => $pathPrefixes) {
-
             $pathPrefixes = (array) $pathPrefixes;
 
             // remove any relativeness from the paths
@@ -85,7 +84,6 @@ final class ComposerFileToClass implements FileToClass
             }, $pathPrefixes);
 
             foreach ($pathPrefixes as $pathPrefix) {
-
                 if ((string) $filePath == $pathPrefix) {
                     $candidates[] = [ $pathPrefix, $classPrefix ];
                     continue;

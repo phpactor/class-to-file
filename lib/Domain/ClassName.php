@@ -25,7 +25,7 @@ final class ClassName
 
     public function namespace()
     {
-        return substr($this->fullyQualifiedName, 0, strrpos($this->fullyQualifiedName, '\\'));
+        return substr($this->fullyQualifiedName, 0, (int) strrpos($this->fullyQualifiedName, '\\'));
     }
 
     public function name()
