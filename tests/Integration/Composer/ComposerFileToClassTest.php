@@ -125,7 +125,7 @@ class ComposerFileToClassTest extends ComposerTestCase
         $this->loadExample('classmap.json');
         $this->assertFilePathToClassName(
             '/classmap/Acme/Post.php',
-            [ 'Random\\Name\\Generator' ]
+            [ 'Random\\Name\\Generator', 'Random\\Name\\SubGenerator'  ]
         );
     }
 
