@@ -7,4 +7,5 @@ class Generator
 }
 
 class SubGenerator
-{}
+{
+}
