@@ -98,6 +98,19 @@ class ComposerClassToFile implements ClassToFile
         $candidates = [];
 
         foreach ($prefixes as $prefix => $paths) {
+
+            if (is_int($prefix)) {
+                $prefix = '';
+            }
+
+            if ($prefix && false === $className->beginsWith($prefix)) {
+                continue;
+            }
+
+            if (!isset($candidates[$prefix])) {
+                $candidates[$prefix] = [];
+            }
+
             $paths = (array) $paths;
             $paths = array_map(function ($path) {
                 if (!file_exists($path)) {
@@ -111,18 +124,6 @@ class ComposerClassToFile implements ClassToFile
 
                 return realpath($path);
             }, $paths);
-
-            if (is_int($prefix)) {
-                $prefix = '';
-            }
-
-            if ($prefix && false === $className->beginsWith($prefix)) {
-                continue;
-            }
-
-            if (!isset($candidates[$prefix])) {
-                $candidates[$prefix] = [];
-            }
 
             $candidates[$prefix] = array_merge($candidates[$prefix], $paths);
         }
