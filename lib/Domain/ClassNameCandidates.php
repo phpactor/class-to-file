@@ -20,7 +20,7 @@ final class ClassNameCandidates implements \IteratorAggregate
 
     public function getIterator()
     {
-        return new \ArrayIterator($this->classNames);
+        return new \ArrayIterator(array_values($this->classNames));
     }
 
     public function noneFound(): bool
@@ -41,6 +41,6 @@ final class ClassNameCandidates implements \IteratorAggregate
 
     private function add(ClassName $className)
     {
-        $this->classNames[] = $className;
+        $this->classNames[$className->__toString()] = $className;
     }
 }
