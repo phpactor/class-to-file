@@ -9,6 +9,7 @@
         }
     ],
     "require": {
+        "php": "^7.2",
         "psr/log": "^1.0",
         "webmozart/path-util": "^2.3"
     },
@@ -32,5 +33,12 @@
         "branch-alias": {
             "dev-master": "0.4.x-dev"
         }
+    },
+    "scripts": {
+        "integrate": [
+            "vendor/bin/php-cs-fixer fix --dry-run",
+            "vendor/bin/phpstan analyse lib -c phpstan.neon",
+            "vendor/bin/phpunit"
+        ]
     }
 }

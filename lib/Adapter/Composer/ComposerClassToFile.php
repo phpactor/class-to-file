@@ -98,7 +98,6 @@ class ComposerClassToFile implements ClassToFile
         $candidates = [];
 
         foreach ($prefixes as $prefix => $paths) {
-
             if (is_int($prefix)) {
                 $prefix = '';
             }
