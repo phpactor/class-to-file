@@ -14,9 +14,9 @@ final class FilePath
         $this->path = $path;
     }
 
-    public function isAbsolute()
+    public function isAbsolute(): bool
     {
-        return 0 === strpos($this->path, '/');
+        return Path::isAbsolute($this->path);
     }
 
     public function __toString()
@@ -24,12 +24,12 @@ final class FilePath
         return $this->path;
     }
 
-    public static function fromString($path)
+    public static function fromString($path): FilePath
     {
         return new self($path);
     }
 
-    public static function fromParts(array $parts)
+    public static function fromParts(array $parts): FilePath
     {
         $path = implode('/', $parts);
 
