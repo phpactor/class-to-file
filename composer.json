@@ -17,7 +17,7 @@
         "phpunit/phpunit": "~7.0",
         "symfony/filesystem": "^3.2",
         "friendsofphp/php-cs-fixer": "~2.15.0",
-        "phpstan/phpstan": "~0.11.0"
+        "phpstan/phpstan": "~0.12.0"
     },
     "autoload": {
         "psr-4": {
