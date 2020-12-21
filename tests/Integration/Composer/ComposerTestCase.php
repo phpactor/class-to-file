@@ -10,7 +10,7 @@ use Symfony\Component\Filesystem\Filesystem;
  */
 abstract class ComposerTestCase extends IntegrationTestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         $this->initWorkspace();
     }

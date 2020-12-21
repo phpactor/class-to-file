@@ -24,7 +24,7 @@ class ComposerClassToFileTest extends ComposerTestCase
      */
     private $converter;
 
-    public function setUp()
+    protected function setUp(): void
     {
         $this->initWorkspace();
         $this->logger = $this->prophesize(LoggerInterface::class);
