@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "php": "^7.2",
+        "php": "^7.3",
         "psr/log": "^1.0",
         "webmozart/path-util": "^2.3"
     },
