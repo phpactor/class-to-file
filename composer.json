@@ -14,10 +14,16 @@
         "webmozart/path-util": "^2.3"
     },
     "require-dev": {
+        "ergebnis/composer-normalize": "^2.0",
+        "friendsofphp/php-cs-fixer": "^2.17",
+        "phpstan/phpstan": "~0.12.0",
         "phpunit/phpunit": "~7.0",
-        "symfony/filesystem": "^3.2",
-        "friendsofphp/php-cs-fixer": "~2.15.0",
-        "phpstan/phpstan": "~0.12.0"
+        "symfony/filesystem": "^3.2"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.4.x-dev"
+        }
     },
     "autoload": {
         "psr-4": {
@@ -29,11 +35,8 @@
             "Phpactor\\ClassFileConverter\\Tests\\": "tests/"
         }
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.4.x-dev"
-        }
-    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "scripts": {
         "integrate": [
             "vendor/bin/php-cs-fixer fix --dry-run",
