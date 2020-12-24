@@ -14,7 +14,7 @@ class SimpleFileToClassTest extends SimpleTestCase
      */
     private $fileToClass;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->initWorkspace();
         $this->copyProject();
