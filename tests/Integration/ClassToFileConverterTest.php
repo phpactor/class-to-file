@@ -13,7 +13,7 @@ class ClassToFileConverterTest extends IntegrationTestCase
 {
     private $classLoader;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->classLoader = require __DIR__.'/../../vendor/autoload.php';
     }

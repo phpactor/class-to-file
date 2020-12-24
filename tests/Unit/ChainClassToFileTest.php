@@ -14,7 +14,7 @@ class ChainClassToFileTest extends TestCase
     private $classToFile1;
     private $classToFile2;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->classToFile1 = $this->prophesize(ClassToFile::class);
         $this->classToFile2 = $this->prophesize(ClassToFile::class);
