@@ -12,7 +12,7 @@ use Phpactor\ClassFileConverter\Domain\ClassNameCandidates;
  */
 class ComposerFileToClassTest extends ComposerTestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->initWorkspace();
     }

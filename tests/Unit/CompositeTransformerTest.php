@@ -15,7 +15,7 @@ class CompositeTransformerTest extends TestCase
 {
     private $transformer;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->classToFile = $this->prophesize(ClassToFile::class);
         $this->fileToClassCandidates = $this->prophesize(FileToClass::class);
