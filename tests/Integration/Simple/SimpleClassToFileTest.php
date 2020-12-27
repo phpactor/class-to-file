@@ -30,7 +30,7 @@ class SimpleClassToFileTest extends SimpleTestCase
         ]), $candidates);
     }
 
-    public function testClassToFileDeeper()
+    public function testClassToFileDeeper(): void
     {
         $candidates = $this->classToFile->classToFileCandidates(ClassName::fromString('Acme\\NamespaceHere\\Hallo'));
 
