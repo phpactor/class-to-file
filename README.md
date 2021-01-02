@@ -56,3 +56,16 @@ composer autoloader, this is supported through the `ChainFileToClass` and
 ```php
 $converter = ClassFileConverter::fromComposerAutoloaders([ $autoloader1, $autoloader2 ]);
 ```
+
+Contributing
+------------
+
+This package is open source and welcomes contributions! Feel free to open a
+pull request on this repository.
+
+Support
+-------
+
+- Create an issue on the main [Phpactor](https://github.com/phpactor/phpactor) repository.
+- Join the `#phpactor` channel on the Slack [Symfony Devs](https://symfony.com/slack-invite) channel.
+
