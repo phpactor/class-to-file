@@ -15,7 +15,7 @@ abstract class ComposerTestCase extends IntegrationTestCase
         $this->initWorkspace();
     }
 
-    protected function loadExample($composerFile)
+    protected function loadExample($composerFile): void
     {
         $projectPath = __DIR__.'/project';
         $composerPath = __DIR__.'/composers/'.$composerFile;

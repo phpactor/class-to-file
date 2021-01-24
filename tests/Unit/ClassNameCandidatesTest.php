@@ -11,7 +11,7 @@ class ClassNameCandidatesTest extends TestCase
     /**
      * @testdox It can be created from class name instances.
      */
-    public function testCreateFromClassNames()
+    public function testCreateFromClassNames(): void
     {
         $classNames = [
             ClassName::fromString('Foobar'),
@@ -24,7 +24,7 @@ class ClassNameCandidatesTest extends TestCase
     /**
      * @testdocs It returns the first match
      */
-    public function testReturnsTheBestMatch()
+    public function testReturnsTheBestMatch(): void
     {
         $classNames = [
             $className = ClassName::fromString('Foobar'),
@@ -39,7 +39,7 @@ class ClassNameCandidatesTest extends TestCase
     /**
      * @testdocs It returns if it is empty or not.
      */
-    public function testEmpty()
+    public function testEmpty(): void
     {
         $classNames = [
             ClassName::fromString('Foobar'),

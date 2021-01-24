@@ -8,7 +8,7 @@ use Phpactor\ClassFileConverter\Domain\ClassNameCandidates;
 
 class ClassNameCandidatesTest extends TestCase
 {
-    public function testEnsuresClassNamesAreUnique()
+    public function testEnsuresClassNamesAreUnique(): void
     {
         $candidates = ClassNameCandidates::fromClassNames([
             ClassName::fromString('Foobar'),

@@ -33,7 +33,7 @@ class ComposerClassToFileTest extends ComposerTestCase
     /**
      * @testdox PSR-4 class name to a file path.
      */
-    public function testPsr4()
+    public function testPsr4(): void
     {
         $this->loadExample('psr4-simple.json');
         $this->assertClassNameToFilePath('Acme\\Test\\Foo\\Class', ['psr4/Foo/Class.php']);
@@ -42,7 +42,7 @@ class ComposerClassToFileTest extends ComposerTestCase
     /**
      * @testdox PSR-4 class in dev namespace
      */
-    public function testPsr4Dev()
+    public function testPsr4Dev(): void
     {
         $this->loadExample('psr4-dev.json');
         $this->assertClassNameToFilePath('Acme\\Dev\\Foo\\Class', ['psr4-dev/Foo/Class.php']);
@@ -51,7 +51,7 @@ class ComposerClassToFileTest extends ComposerTestCase
     /**
      * @testdox PSR-4 multiple matching prefixes
      */
-    public function testPsr4MultipleMatchesLongestPrefixesFirst()
+    public function testPsr4MultipleMatchesLongestPrefixesFirst(): void
     {
         $this->loadExample('psr4-multiple-matching-prefixes.json');
         $this->assertClassNameToFilePath('Acme\\Test\\Foo\\Bar\\Class', [
@@ -64,7 +64,7 @@ class ComposerClassToFileTest extends ComposerTestCase
     /**
      * @testdox PSR-4 with multiple directories.
      */
-    public function testPsr4MultipleDirectories()
+    public function testPsr4MultipleDirectories(): void
     {
         $this->loadExample('psr4-multiple.json');
         $this->assertClassNameToFilePath('Acme\\Test\\Class', ['psr4/Class.php', 'psr4-1/Class.php']);
@@ -73,7 +73,7 @@ class ComposerClassToFileTest extends ComposerTestCase
     /**
      * @testdox PSR-0 class name to a file path.
      */
-    public function testPsr0()
+    public function testPsr0(): void
     {
         $this->loadExample('psr0-simple.json');
         $this->assertClassNameToFilePath('Acme\\Test\\Foo\\Class', ['psr0/Acme/Test/Foo/Class.php']);
@@ -82,7 +82,7 @@ class ComposerClassToFileTest extends ComposerTestCase
     /**
      * @testdox PSR-4 + PSR-0 matching prefixes.
      */
-    public function testPsr0AndPsr4()
+    public function testPsr0AndPsr4(): void
     {
         $this->loadExample('psr0-psr4.json');
         $this->assertClassNameToFilePath('Acme\\Test\\Class', [
@@ -94,7 +94,7 @@ class ComposerClassToFileTest extends ComposerTestCase
     /**
      * @testdox PSR-0 fallback
      */
-    public function testPsr0Fallback()
+    public function testPsr0Fallback(): void
     {
         $this->loadExample('psr0-fallback.json');
         $this->assertClassNameToFilePath('Acme\\Test\\Class', [ 'psr0/Acme/Test/Class.php' ]);
@@ -103,13 +103,13 @@ class ComposerClassToFileTest extends ComposerTestCase
     /**
      * @testdox PSR-0 short name prefix
      */
-    public function testPsr0ShortNamePrefix()
+    public function testPsr0ShortNamePrefix(): void
     {
         $this->loadExample('psr0-short-prefix.json');
         $this->assertClassNameToFilePath('Twig_Extension', [ 'psr0/twig/Twig/Extension.php' ]);
     }
 
-    public function testPsr0ShortNamePrefix2()
+    public function testPsr0ShortNamePrefix2(): void
     {
         $this->loadExample('psr0-short-prefix.json');
         $this->assertClassNameToFilePath('Twig_Tests_Extension', [ 'psr0/twig/Twig/Tests/Extension.php' ]);
@@ -119,7 +119,7 @@ class ComposerClassToFileTest extends ComposerTestCase
     /**
      * @testdox PSR-4 fallback
      */
-    public function testPsr4Fallback()
+    public function testPsr4Fallback(): void
     {
         $this->loadExample('psr4-fallback.json');
         $this->assertClassNameToFilePath('Acme\\Test\\Class', [ 'psr4/Acme/Test/Class.php' ]);
@@ -128,7 +128,7 @@ class ComposerClassToFileTest extends ComposerTestCase
     /**
      * @testdox Loads from classmap
      */
-    public function testClassmap()
+    public function testClassmap(): void
     {
         $this->loadExample('classmap.json');
         $this->assertClassNameToFilePath(
@@ -140,7 +140,7 @@ class ComposerClassToFileTest extends ComposerTestCase
     /**
      * @testdox Ignores invalid directories.
      */
-    public function testIgnoresInvalidDirs()
+    public function testIgnoresInvalidDirs(): void
     {
         $this->loadExample('invalid-dir.json');
         $this->logger->warning(Argument::containingString('Composer mapped path'))->shouldBeCalledTimes(1);
@@ -151,7 +151,7 @@ class ComposerClassToFileTest extends ComposerTestCase
         );
     }
 
-    private function assertClassNameToFilePath($className, array $filePaths, array $messages = [])
+    private function assertClassNameToFilePath($className, array $filePaths, array $messages = []): void
     {
         $filePaths = array_map(function ($filePath) {
             return FilePath::fromParts([$this->workspacePath(), $filePath]);

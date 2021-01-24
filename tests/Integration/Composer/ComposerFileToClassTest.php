@@ -20,7 +20,7 @@ class ComposerFileToClassTest extends ComposerTestCase
     /**
      * @testdox PSR-4 file to class.
      */
-    public function testPsr4()
+    public function testPsr4(): void
     {
         $this->loadExample('psr4-simple.json');
         $this->assertFilePathToClassName('/psr4/Foo/Class.php', ['Acme\\Test\\Foo\\Class']);
@@ -29,7 +29,7 @@ class ComposerFileToClassTest extends ComposerTestCase
     /**
      * @testdox PSR-4 file with relative path components
      */
-    public function testPsr4WithRelativePathComponents()
+    public function testPsr4WithRelativePathComponents(): void
     {
         $this->loadExample('psr4-simple.json');
         $this->assertFilePathToClassName('/psr4/Foo/../Foo/Class.php', ['Acme\\Test\\Foo\\Class']);
@@ -38,7 +38,7 @@ class ComposerFileToClassTest extends ComposerTestCase
     /**
      * @testdox PSR-4 multiple matching prefixes
      */
-    public function testPsr4MultipleMatches()
+    public function testPsr4MultipleMatches(): void
     {
         $this->loadExample('psr4-multiple-matching-prefixes.json');
         $this->assertFilePathToClassName('/psr4/tests/Class.php', [
@@ -50,7 +50,7 @@ class ComposerFileToClassTest extends ComposerTestCase
     /**
      * @testdox PSR-4 with multiple directories.
      */
-    public function testPsr4MultipleDirectories()
+    public function testPsr4MultipleDirectories(): void
     {
         $this->loadExample('psr4-multiple.json');
         $this->assertFilePathToClassName(
@@ -64,7 +64,7 @@ class ComposerFileToClassTest extends ComposerTestCase
     /**
      * @testdox PSR-0 class name to a file path.
      */
-    public function testPsr0()
+    public function testPsr0(): void
     {
         $this->loadExample('psr0-simple.json');
         $this->assertFilePathToClassName(
@@ -76,7 +76,7 @@ class ComposerFileToClassTest extends ComposerTestCase
     /**
      * @testdox PSR-4 + PSR-0 with conflict
      */
-    public function testPsr0AndPsr4Conflict()
+    public function testPsr0AndPsr4Conflict(): void
     {
         $this->loadExample('psr0-psr4-conflict.json');
         $this->assertFilePathToClassName('/src/Acme/Test/Class.php', [
@@ -88,7 +88,7 @@ class ComposerFileToClassTest extends ComposerTestCase
     /**
      * @testdox PSR-0 no prefix
      */
-    public function testPsr0Fallback()
+    public function testPsr0Fallback(): void
     {
         $this->loadExample('psr0-fallback.json');
         $this->assertFilePathToClassName('/psr0/Acme/Test/Class.php', [
@@ -99,7 +99,7 @@ class ComposerFileToClassTest extends ComposerTestCase
     /**
      * @testdox PSR-4 no fallback
      */
-    public function testPsr4Fallback()
+    public function testPsr4Fallback(): void
     {
         $this->loadExample('psr4-fallback.json');
         $this->assertFilePathToClassName('/psr4/Acme/Test/Class.php', [
@@ -107,7 +107,7 @@ class ComposerFileToClassTest extends ComposerTestCase
         ]);
     }
 
-    public function testNestedPsr4Directories()
+    public function testNestedPsr4Directories(): void
     {
         $this->loadExample('psr4-nested.json');
         $this->assertFilePathToClassName('/psr4/AppBundle/Foo.php', [
@@ -120,7 +120,7 @@ class ComposerFileToClassTest extends ComposerTestCase
     /**
      * @testdox Loads from classmap
      */
-    public function testClassmap()
+    public function testClassmap(): void
     {
         $this->loadExample('classmap.json');
         $this->assertFilePathToClassName(
@@ -132,7 +132,7 @@ class ComposerFileToClassTest extends ComposerTestCase
     /**K
      * @testdox Loads with non-existing directory
      */
-    public function testNonExistingDirectory()
+    public function testNonExistingDirectory(): void
     {
         $this->loadExample('nonexisting.json');
         $this->assertFilePathToClassName(
@@ -142,7 +142,7 @@ class ComposerFileToClassTest extends ComposerTestCase
     }
 
 
-    private function assertFilePathToClassName($filePath, array $classNames)
+    private function assertFilePathToClassName($filePath, array $classNames): void
     {
         $converter = new ComposerFileToClass($this->getClassLoader());
         $expected = ClassNameCandidates::fromClassNames(array_map(function ($className) {

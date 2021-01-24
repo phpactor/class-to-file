@@ -7,7 +7,7 @@ use Symfony\Component\Filesystem\Filesystem;
 
 class SimpleTestCase extends IntegrationTestCase
 {
-    protected function copyProject()
+    protected function copyProject(): void
     {
         $projectPath = __DIR__.'/project';
         $filesystem = new Filesystem();

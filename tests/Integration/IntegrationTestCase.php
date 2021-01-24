@@ -7,7 +7,7 @@ use Symfony\Component\Filesystem\Filesystem;
 
 abstract class IntegrationTestCase extends TestCase
 {
-    protected function initWorkspace()
+    protected function initWorkspace(): void
     {
         $filesystem = new Filesystem();
         if ($filesystem->exists($this->workspacePath())) {

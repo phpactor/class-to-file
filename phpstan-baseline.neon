@@ -11,11 +11,6 @@ parameters:
 			path: lib/Adapter/Composer/ComposerClassToFile.php
 
 		-
-			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Adapter\\\\Composer\\\\ComposerClassToFile\\:\\:resolveFile\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: lib/Adapter/Composer/ComposerClassToFile.php
-
-		-
 			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Adapter\\\\Composer\\\\ComposerClassToFile\\:\\:resolveFile\\(\\) has parameter \\$candidates with no typehint specified\\.$#"
 			count: 1
 			path: lib/Adapter/Composer/ComposerClassToFile.php
@@ -96,11 +91,6 @@ parameters:
 			path: lib/Domain/ChainClassToFile.php
 
 		-
-			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ChainClassToFile\\:\\:add\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: lib/Domain/ChainClassToFile.php
-
-		-
 			message: "#^Property Phpactor\\\\ClassFileConverter\\\\Domain\\\\ChainFileToClass\\:\\:\\$converters type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: lib/Domain/ChainFileToClass.php
@@ -112,11 +102,6 @@ parameters:
 
 		-
 			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ChainFileToClass\\:\\:fileToClassCandidates\\(\\) return type has no value type specified in iterable type Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassNameCandidates\\.$#"
-			count: 1
-			path: lib/Domain/ChainFileToClass.php
-
-		-
-			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ChainFileToClass\\:\\:add\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: lib/Domain/ChainFileToClass.php
 
@@ -186,11 +171,6 @@ parameters:
 			path: lib/Domain/ClassNameCandidates.php
 
 		-
-			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassNameCandidates\\:\\:add\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: lib/Domain/ClassNameCandidates.php
-
-		-
 			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassToFile\\:\\:classToFileCandidates\\(\\) return type has no value type specified in iterable type Phpactor\\\\ClassFileConverter\\\\Domain\\\\FilePathCandidates\\.$#"
 			count: 1
 			path: lib/Domain/ClassToFile.php
@@ -247,11 +227,6 @@ parameters:
 
 		-
 			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\FilePathCandidates\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: lib/Domain/FilePathCandidates.php
-
-		-
-			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\FilePathCandidates\\:\\:add\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: lib/Domain/FilePathCandidates.php
 

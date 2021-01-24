@@ -21,7 +21,7 @@ class ClassToFileConverterTest extends IntegrationTestCase
     /**
      * It can build itself using a composer autoloader.
      */
-    public function testCreateForComposer()
+    public function testCreateForComposer(): void
     {
         $converter = ClassToFileConverter::fromComposerAutoloader($this->classLoader);
         $candidates = $converter->fileToClassCandidates(FilePath::fromString(__FILE__));
@@ -40,7 +40,7 @@ class ClassToFileConverterTest extends IntegrationTestCase
     /**
      * It can build itself using a series of composer autoloaders.
      */
-    public function testCreateForComposers()
+    public function testCreateForComposers(): void
     {
         $converter = ClassToFileConverter::fromComposerAutoloaders([$this->classLoader]);
         $candidates = $converter->fileToClassCandidates(FilePath::fromString(__FILE__));

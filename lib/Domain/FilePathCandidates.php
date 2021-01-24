@@ -2,7 +2,11 @@
 
 namespace Phpactor\ClassFileConverter\Domain;
 
-final class FilePathCandidates implements \IteratorAggregate
+use IteratorAggregate;
+use RuntimeException;
+use ArrayIterator;
+
+final class FilePathCandidates implements IteratorAggregate
 {
     private $filePaths = [];
 
@@ -28,7 +32,7 @@ final class FilePathCandidates implements \IteratorAggregate
         return $this->filePaths;
     }
 
-    public function add(FilePath $filePath)
+    public function add(FilePath $filePath): void
     {
         $this->filePaths[] = $filePath;
     }
@@ -36,7 +40,7 @@ final class FilePathCandidates implements \IteratorAggregate
     public function best(): FilePath
     {
         if (empty($this->filePaths)) {
-            throw new \RuntimeException(
+            throw new RuntimeException(
                 'There are no file path candidates'
             );
         }
@@ -51,6 +55,6 @@ final class FilePathCandidates implements \IteratorAggregate
 
     public function getIterator()
     {
-        return new \ArrayIterator($this->filePaths);
+        return new ArrayIterator($this->filePaths);
     }
 }

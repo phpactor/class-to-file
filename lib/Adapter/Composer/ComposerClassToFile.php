@@ -75,7 +75,7 @@ class ComposerClassToFile implements ClassToFile
         ];
     }
 
-    private function resolveFile(&$candidates, array $prefixes, NameInflector $inflector, ClassName $className)
+    private function resolveFile(&$candidates, array $prefixes, NameInflector $inflector, ClassName $className): void
     {
         $fileCandidates = $this->getFileCandidates($className, $prefixes);
 

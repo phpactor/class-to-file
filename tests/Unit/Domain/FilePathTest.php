@@ -10,7 +10,7 @@ class FilePathTest extends TestCase
     /**
      * @dataProvider provideIsAbsolute
      */
-    public function testIsAbsolute(string $path, bool $expected)
+    public function testIsAbsolute(string $path, bool $expected): void
     {
         $path = FilePath::fromString($path);
         self::assertEquals($expected, $path->isAbsolute());

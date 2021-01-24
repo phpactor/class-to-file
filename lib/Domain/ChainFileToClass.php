@@ -28,7 +28,7 @@ class ChainFileToClass implements FileToClass
         return ClassNameCandidates::fromClassNames($classNames);
     }
 
-    private function add(FileToClass $fileToClass)
+    private function add(FileToClass $fileToClass): void
     {
         $this->converters[] = $fileToClass;
     }

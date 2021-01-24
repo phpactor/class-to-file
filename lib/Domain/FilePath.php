@@ -14,14 +14,14 @@ final class FilePath
         $this->path = $path;
     }
 
-    public function isAbsolute(): bool
-    {
-        return Path::isAbsolute($this->path);
-    }
-
     public function __toString()
     {
         return $this->path;
+    }
+
+    public function isAbsolute(): bool
+    {
+        return Path::isAbsolute($this->path);
     }
 
     public static function fromString($path): FilePath

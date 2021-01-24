@@ -10,7 +10,7 @@ class ClassNameTest extends TestCase
     /**
      * @dataProvider provideBeginsWith
      */
-    public function testBeginsWith($name, $prefix, $expected)
+    public function testBeginsWith($name, $prefix, $expected): void
     {
         $className = ClassName::fromString($name);
         $this->assertEquals($expected, $className->beginsWith($prefix));
@@ -42,13 +42,13 @@ class ClassNameTest extends TestCase
         ];
     }
 
-    public function testName()
+    public function testName(): void
     {
         $class = ClassName::fromString('Foobar\\Barfoo');
         $this->assertEquals('Barfoo', $class->name());
     }
 
-    public function testNameShort()
+    public function testNameShort(): void
     {
         $class = ClassName::fromString('Barfoo');
         $this->assertEquals('Barfoo', $class->name());

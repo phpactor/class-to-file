@@ -20,7 +20,7 @@ class ChainFileToClassTest extends TestCase
         $this->fileToClass2 = $this->prophesize(FileToClass::class);
     }
 
-    public function testChainClassToFIle()
+    public function testChainClassToFIle(): void
     {
         $path = FilePath::fromString('Foobar');
         $class1 = ClassName::fromString('one');
