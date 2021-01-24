@@ -10,17 +10,17 @@ final class ClassName
     {
     }
 
+    public function __toString()
+    {
+        return $this->fullyQualifiedName;
+    }
+
     public static function fromString($string)
     {
         $new = new self();
         $new->fullyQualifiedName = $string;
 
         return $new;
-    }
-
-    public function __toString()
-    {
-        return $this->fullyQualifiedName;
     }
 
     public function namespace()

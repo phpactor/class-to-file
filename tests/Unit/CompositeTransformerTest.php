@@ -29,7 +29,7 @@ class CompositeTransformerTest extends TestCase
     /**
      * @testdox It transforms from class to file.
      */
-    public function testClassToFile()
+    public function testClassToFile(): void
     {
         $className = ClassName::fromString('Foo');
         $expectedCandidates = FilePathCandidates::fromFilePaths([]);
@@ -42,7 +42,7 @@ class CompositeTransformerTest extends TestCase
     /**
      * @testdox It transforms from file to class.
      */
-    public function testFileToClass()
+    public function testFileToClass(): void
     {
         $filePath = FilePath::fromString('Foo');
         $expectedCandidates = ClassNameCandidates::fromClassNames([]);

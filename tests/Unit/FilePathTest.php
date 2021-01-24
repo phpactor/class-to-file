@@ -7,7 +7,7 @@ use Phpactor\ClassFileConverter\Domain\FilePath;
 
 class FilePathTest extends TestCase
 {
-    public function testIsAbsolute()
+    public function testIsAbsolute(): void
     {
         $this->assertTrue(FilePath::fromString('/path/to/foo')->isAbsolute());
         $this->assertFalse(FilePath::fromString('path/to/foo')->isAbsolute());

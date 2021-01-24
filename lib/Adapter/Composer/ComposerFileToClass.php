@@ -7,6 +7,7 @@ use Phpactor\ClassFileConverter\Domain\FilePath;
 use Phpactor\ClassFileConverter\Domain\FileToClass;
 use Phpactor\ClassFileConverter\Domain\ClassNameCandidates;
 use Webmozart\PathUtil\Path;
+use InvalidArgumentException;
 
 final class ComposerFileToClass implements FileToClass
 {
@@ -23,7 +24,7 @@ final class ComposerFileToClass implements FileToClass
     public function fileToClassCandidates(FilePath $filePath): ClassNameCandidates
     {
         if (false === $filePath->isAbsolute()) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Path must be absolute'
             ));
         }

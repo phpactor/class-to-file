@@ -2,7 +2,11 @@
 
 namespace Phpactor\ClassFileConverter\Domain;
 
-final class ClassNameCandidates implements \IteratorAggregate
+use IteratorAggregate;
+use ArrayIterator;
+use RuntimeException;
+
+final class ClassNameCandidates implements IteratorAggregate
 {
     private $classNames = [];
 
@@ -20,7 +24,7 @@ final class ClassNameCandidates implements \IteratorAggregate
 
     public function getIterator()
     {
-        return new \ArrayIterator(array_values($this->classNames));
+        return new ArrayIterator(array_values($this->classNames));
     }
 
     public function noneFound(): bool
@@ -31,7 +35,7 @@ final class ClassNameCandidates implements \IteratorAggregate
     public function best(): ClassName
     {
         if (empty($this->classNames)) {
-            throw new \RuntimeException(
+            throw new RuntimeException(
                 'There are no class name candidates'
             );
         }
@@ -39,7 +43,7 @@ final class ClassNameCandidates implements \IteratorAggregate
         return reset($this->classNames);
     }
 
-    private function add(ClassName $className)
+    private function add(ClassName $className): void
     {
         $this->classNames[$className->__toString()] = $className;
     }

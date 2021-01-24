@@ -21,7 +21,7 @@ class SimpleClassToFileTest extends SimpleTestCase
         $this->classToFile = new SimpleClassToFile($this->workspacePath());
     }
 
-    public function testClassToFile()
+    public function testClassToFile(): void
     {
         $candidates = $this->classToFile->classToFileCandidates(ClassName::fromString('Acme\\Foobar'));
 
@@ -39,7 +39,7 @@ class SimpleClassToFileTest extends SimpleTestCase
         ]), $candidates);
     }
 
-    public function testClassToNoCandidates()
+    public function testClassToNoCandidates(): void
     {
         $candidates = $this->classToFile->classToFileCandidates(ClassName::fromString('Zog\\Foobar'));
         $this->assertEquals(FilePathCandidates::fromFilePaths([]), $candidates);

@@ -11,7 +11,7 @@ class FilePathCandidatesTest extends TestCase
     /**
      * @testdox It can be created from class name instances.
      */
-    public function testCreateFromFilePaths()
+    public function testCreateFromFilePaths(): void
     {
         $filePaths = [
             FilePath::fromString('Foobar'),
@@ -24,7 +24,7 @@ class FilePathCandidatesTest extends TestCase
     /**
      * @testdox it returns the best.
      */
-    public function testBest()
+    public function testBest(): void
     {
         $filePaths = [
             $filePath = FilePath::fromString('Foobar'),
@@ -39,7 +39,7 @@ class FilePathCandidatesTest extends TestCase
     /**
      * @testdocs It returns if it is empty or not.
      */
-    public function testEmpty()
+    public function testEmpty(): void
     {
         $filePaths = [
             FilePath::fromString('Foobar'),
@@ -54,7 +54,7 @@ class FilePathCandidatesTest extends TestCase
     /**
      * @testdocs It can to array.
      */
-    public function testToArray()
+    public function testToArray(): void
     {
         $filePaths = [
             FilePath::fromString('Foobar'),

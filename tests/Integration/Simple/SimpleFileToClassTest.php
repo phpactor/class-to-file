@@ -21,7 +21,7 @@ class SimpleFileToClassTest extends SimpleTestCase
         $this->fileToClass = new SimpleFileToClass();
     }
 
-    public function testFileToClass()
+    public function testFileToClass(): void
     {
         $candidates = $this->fileToClass->fileToClassCandidates(FilePath::fromString(__DIR__ . '/project/lib/Foobar.php'));
 
@@ -30,7 +30,7 @@ class SimpleFileToClassTest extends SimpleTestCase
         ]), $candidates);
     }
 
-    public function testFileToInterface()
+    public function testFileToInterface(): void
     {
         $candidates = $this->fileToClass->fileToClassCandidates(FilePath::fromString(__DIR__ . '/project/lib/FoobarInterface.php'));
 
@@ -39,7 +39,7 @@ class SimpleFileToClassTest extends SimpleTestCase
         ]), $candidates);
     }
 
-    public function testFileToTrait()
+    public function testFileToTrait(): void
     {
         $candidates = $this->fileToClass->fileToClassCandidates(FilePath::fromString(__DIR__ . '/project/lib/FoobarTrait.php'));
 
@@ -48,14 +48,14 @@ class SimpleFileToClassTest extends SimpleTestCase
         ]), $candidates);
     }
 
-    public function testFileToNoCandidates()
+    public function testFileToNoCandidates(): void
     {
         $candidates = $this->fileToClass->fileToClassCandidates(FilePath::fromString(__DIR__ . '/project/lib/NoClasses.php'));
 
         $this->assertEquals(ClassNameCandidates::fromClassNames([]), $candidates);
     }
 
-    public function testFileToClassNotExisting()
+    public function testFileToClassNotExisting(): void
     {
         $candidates = $this->fileToClass->fileToClassCandidates(FilePath::fromString(__DIR__ . '/project/notexist/NotExist.php'));
 
