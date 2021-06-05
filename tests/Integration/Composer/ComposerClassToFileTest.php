@@ -6,6 +6,7 @@ use Phpactor\ClassFileConverter\Domain\FilePath;
 use Phpactor\ClassFileConverter\Domain\ClassName;
 use Phpactor\ClassFileConverter\Domain\FilePathCandidates;
 use Phpactor\ClassFileConverter\Adapter\Composer\ComposerClassToFile;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Psr\Log\LoggerInterface;
 use Prophecy\Argument;
 
@@ -14,6 +15,8 @@ use Prophecy\Argument;
  */
 class ComposerClassToFileTest extends ComposerTestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var LoggerInterface
      */

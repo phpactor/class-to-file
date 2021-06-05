@@ -23,7 +23,7 @@ abstract class ComposerTestCase extends IntegrationTestCase
         $filesystem->mirror($projectPath, $this->workspacePath());
         $filesystem->copy($composerPath, $this->workspacePath().'/composer.json');
         chdir($this->workspacePath());
-        exec('composer dumpautoload 2> /dev/null');
+        exec('composer install 2> /dev/null');
     }
 
     protected function getClassLoader()
