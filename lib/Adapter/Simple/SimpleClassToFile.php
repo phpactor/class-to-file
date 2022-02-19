@@ -41,9 +41,8 @@ class SimpleClassToFile implements ClassToFile
         $iterator = new RegexIterator($iterator, $pattern);
 
         foreach ($iterator as $phpFile) {
-            if (ClassName::fromString(
-                $this->classScanner->getClassNameFromFile($phpFile->getPathName())
-            ) == $className) {
+            $className = $this->classScanner->getClassNameFromFile($phpFile->getPathName());
+            if (ClassName::fromString($className) == $className) {
                 $candidates[] = FilePath::fromString($phpFile->getPathName());
             }
         }

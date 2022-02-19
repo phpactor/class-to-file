@@ -11,20 +11,9 @@ use RuntimeException;
  */
 class ClassScanner
 {
-    public function getClassNameFromFile($file)
+    public function getClassNameFromFile(string $file): ?string
     {
-        if (!file_exists($file)) {
-            return null;
-        }
-
         $fp = fopen($file, 'r');
-
-        if (false === $fp) {
-            throw new RuntimeException(sprintf(
-                'Could not open file "%s"',
-                $file
-            ));
-        }
 
         $class = $namespace = $buffer = '';
         $i = 0;
@@ -38,17 +27,19 @@ class ClassScanner
             for ($line = 0; $line <= 20; $line++) {
                 $buffer .= fgets($fp);
             }
-            $tokens = @token_get_all($buffer);
+            $tokens = @\token_get_all($buffer);
 
             if (strpos($buffer, '{') === false) {
                 continue;
             }
 
             for (; $i < count($tokens); $i++) {
-                if ($tokens[$i][0] === \T_NAMESPACE) {
+                if ($tokens[$i][0] === T_NAMESPACE) {
                     for ($j = $i + 1; $j < count($tokens); $j++) {
                         $tokenId = $tokens[$j][0];
-                        if ($tokenId === T_STRING || $tokenId === 314) {
+                        $namespaceToken = defined('T_NAME_QUALIFIED') ? T_NAME_QUALIFIED : T_STRING;
+
+                        if ($tokenId === T_STRING || $tokenId === $namespaceToken) {
                             $namespace .= '\\' . $tokens[$j][1];
                         } elseif ($tokens[$j] === '{' || $tokens[$j] === ';') {
                             break;
@@ -56,11 +47,11 @@ class ClassScanner
                     }
                 }
 
-                $token = $tokens[$i][0];
-                if ($token === \T_INTERFACE || $token === \T_CLASS || $token === \T_TRAIT) {
+                if ($tokens[$i][0] === T_CLASS) {
                     for ($j = $i + 1; $j < count($tokens); $j++) {
-                        if ($tokens[$j][0] === \T_STRING) {
+                        if ($tokens[$j][0] === T_STRING) {
                             $class = $tokens[$i + 2][1];
+
                             break 2;
                         }
                     }
@@ -72,8 +63,6 @@ class ClassScanner
             return null;
         }
 
-        fclose($fp);
-
-        return ltrim($namespace . '\\' . $class, '\\');
+        return $namespace . '\\' . $class;
     }
 }
