@@ -20,7 +20,7 @@
         "phpunit/phpunit": "^9.0",
         "symfony/filesystem": "^4.2 || ^5.0",
         "phpspec/prophecy-phpunit": "^2.0",
-        "symfony/var-dumper": "^6.0"
+        "symfony/var-dumper": "^6.0 || ^5.0"
     },
     "extra": {
         "branch-alias": {
