@@ -15,7 +15,7 @@
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.0",
-        "friendsofphp/php-cs-fixer": "^2.17",
+        "friendsofphp/php-cs-fixer": "^3.0",
         "phpstan/phpstan": "~0.12.0",
         "phpunit/phpunit": "^9.0",
         "symfony/filesystem": "^4.2 || ^5.0",
@@ -41,7 +41,7 @@
     "prefer-stable": true,
     "scripts": {
         "integrate": [
-            "vendor/bin/php-cs-fixer fix --dry-run",
+            "vendor/bin/php-cs-fixer fix --dry-run --allow-risky=yes",
             "vendor/bin/phpstan analyse lib -c phpstan.neon",
             "vendor/bin/phpunit"
         ]

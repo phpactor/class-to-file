@@ -6,6 +6,16 @@ parameters:
 			path: lib/Adapter/Composer/ComposerClassToFile.php
 
 		-
+			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Adapter\\\\Composer\\\\ComposerClassToFile\\:\\:getFileCandidates\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: lib/Adapter/Composer/ComposerClassToFile.php
+
+		-
+			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Adapter\\\\Composer\\\\ComposerClassToFile\\:\\:getFileCandidates\\(\\) has parameter \\$prefixes with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: lib/Adapter/Composer/ComposerClassToFile.php
+
+		-
 			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Adapter\\\\Composer\\\\ComposerClassToFile\\:\\:getStrategies\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: lib/Adapter/Composer/ComposerClassToFile.php
@@ -17,16 +27,6 @@ parameters:
 
 		-
 			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Adapter\\\\Composer\\\\ComposerClassToFile\\:\\:resolveFile\\(\\) has parameter \\$prefixes with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: lib/Adapter/Composer/ComposerClassToFile.php
-
-		-
-			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Adapter\\\\Composer\\\\ComposerClassToFile\\:\\:getFileCandidates\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: lib/Adapter/Composer/ComposerClassToFile.php
-
-		-
-			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Adapter\\\\Composer\\\\ComposerClassToFile\\:\\:getFileCandidates\\(\\) has parameter \\$prefixes with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: lib/Adapter/Composer/ComposerClassToFile.php
 
@@ -51,16 +51,6 @@ parameters:
 			path: lib/Adapter/Composer/ComposerFileToClass.php
 
 		-
-			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Adapter\\\\Simple\\\\ClassScanner\\:\\:getClassNameFromFile\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: lib/Adapter/Simple/ClassScanner.php
-
-		-
-			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Adapter\\\\Simple\\\\ClassScanner\\:\\:getClassNameFromFile\\(\\) has parameter \\$file with no typehint specified\\.$#"
-			count: 1
-			path: lib/Adapter/Simple/ClassScanner.php
-
-		-
 			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Adapter\\\\Simple\\\\SimpleClassToFile\\:\\:classToFileCandidates\\(\\) return type has no value type specified in iterable type Phpactor\\\\ClassFileConverter\\\\Domain\\\\FilePathCandidates\\.$#"
 			count: 1
 			path: lib/Adapter/Simple/SimpleClassToFile.php
@@ -76,11 +66,6 @@ parameters:
 			path: lib/ClassToFileConverter.php
 
 		-
-			message: "#^Property Phpactor\\\\ClassFileConverter\\\\Domain\\\\ChainClassToFile\\:\\:\\$converters type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: lib/Domain/ChainClassToFile.php
-
-		-
 			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ChainClassToFile\\:\\:__construct\\(\\) has parameter \\$converters with no value type specified in iterable type array\\.$#"
 			count: 1
 			path: lib/Domain/ChainClassToFile.php
@@ -91,9 +76,9 @@ parameters:
 			path: lib/Domain/ChainClassToFile.php
 
 		-
-			message: "#^Property Phpactor\\\\ClassFileConverter\\\\Domain\\\\ChainFileToClass\\:\\:\\$converters type has no value type specified in iterable type array\\.$#"
+			message: "#^Property Phpactor\\\\ClassFileConverter\\\\Domain\\\\ChainClassToFile\\:\\:\\$converters type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: lib/Domain/ChainFileToClass.php
+			path: lib/Domain/ChainClassToFile.php
 
 		-
 			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ChainFileToClass\\:\\:__construct\\(\\) has parameter \\$converters with no value type specified in iterable type array\\.$#"
@@ -106,7 +91,17 @@ parameters:
 			path: lib/Domain/ChainFileToClass.php
 
 		-
-			message: "#^Property Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassName\\:\\:\\$fullyQualifiedName has no typehint specified\\.$#"
+			message: "#^Property Phpactor\\\\ClassFileConverter\\\\Domain\\\\ChainFileToClass\\:\\:\\$converters type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: lib/Domain/ChainFileToClass.php
+
+		-
+			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassName\\:\\:beginsWith\\(\\) has no return typehint specified\\.$#"
+			count: 1
+			path: lib/Domain/ClassName.php
+
+		-
+			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassName\\:\\:beginsWith\\(\\) has parameter \\$prefix with no typehint specified\\.$#"
 			count: 1
 			path: lib/Domain/ClassName.php
 
@@ -121,32 +116,22 @@ parameters:
 			path: lib/Domain/ClassName.php
 
 		-
-			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassName\\:\\:namespace\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: lib/Domain/ClassName.php
-
-		-
 			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassName\\:\\:name\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: lib/Domain/ClassName.php
 
 		-
-			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassName\\:\\:beginsWith\\(\\) has no return typehint specified\\.$#"
+			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassName\\:\\:namespace\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: lib/Domain/ClassName.php
 
 		-
-			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassName\\:\\:beginsWith\\(\\) has parameter \\$prefix with no typehint specified\\.$#"
+			message: "#^Property Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassName\\:\\:\\$fullyQualifiedName has no typehint specified\\.$#"
 			count: 1
 			path: lib/Domain/ClassName.php
 
 		-
 			message: "#^Class Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassNameCandidates implements generic interface IteratorAggregate but does not specify its types\\: TKey, TValue$#"
-			count: 1
-			path: lib/Domain/ClassNameCandidates.php
-
-		-
-			message: "#^Property Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassNameCandidates\\:\\:\\$classNames has no typehint specified\\.$#"
 			count: 1
 			path: lib/Domain/ClassNameCandidates.php
 
@@ -171,14 +156,14 @@ parameters:
 			path: lib/Domain/ClassNameCandidates.php
 
 		-
+			message: "#^Property Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassNameCandidates\\:\\:\\$classNames has no typehint specified\\.$#"
+			count: 1
+			path: lib/Domain/ClassNameCandidates.php
+
+		-
 			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassToFile\\:\\:classToFileCandidates\\(\\) return type has no value type specified in iterable type Phpactor\\\\ClassFileConverter\\\\Domain\\\\FilePathCandidates\\.$#"
 			count: 1
 			path: lib/Domain/ClassToFile.php
-
-		-
-			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassToFileFileToClass\\:\\:fileToClassCandidates\\(\\) return type has no value type specified in iterable type Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassNameCandidates\\.$#"
-			count: 1
-			path: lib/Domain/ClassToFileFileToClass.php
 
 		-
 			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassToFileFileToClass\\:\\:classToFileCandidates\\(\\) return type has no value type specified in iterable type Phpactor\\\\ClassFileConverter\\\\Domain\\\\FilePathCandidates\\.$#"
@@ -186,9 +171,9 @@ parameters:
 			path: lib/Domain/ClassToFileFileToClass.php
 
 		-
-			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\FilePath\\:\\:fromString\\(\\) has parameter \\$path with no typehint specified\\.$#"
+			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassToFileFileToClass\\:\\:fileToClassCandidates\\(\\) return type has no value type specified in iterable type Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassNameCandidates\\.$#"
 			count: 1
-			path: lib/Domain/FilePath.php
+			path: lib/Domain/ClassToFileFileToClass.php
 
 		-
 			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\FilePath\\:\\:fromParts\\(\\) has parameter \\$parts with no value type specified in iterable type array\\.$#"
@@ -196,12 +181,12 @@ parameters:
 			path: lib/Domain/FilePath.php
 
 		-
-			message: "#^Class Phpactor\\\\ClassFileConverter\\\\Domain\\\\FilePathCandidates implements generic interface IteratorAggregate but does not specify its types\\: TKey, TValue$#"
+			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\FilePath\\:\\:fromString\\(\\) has parameter \\$path with no typehint specified\\.$#"
 			count: 1
-			path: lib/Domain/FilePathCandidates.php
+			path: lib/Domain/FilePath.php
 
 		-
-			message: "#^Property Phpactor\\\\ClassFileConverter\\\\Domain\\\\FilePathCandidates\\:\\:\\$filePaths has no typehint specified\\.$#"
+			message: "#^Class Phpactor\\\\ClassFileConverter\\\\Domain\\\\FilePathCandidates implements generic interface IteratorAggregate but does not specify its types\\: TKey, TValue$#"
 			count: 1
 			path: lib/Domain/FilePathCandidates.php
 
@@ -226,12 +211,17 @@ parameters:
 			path: lib/Domain/FilePathCandidates.php
 
 		-
+			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\FilePathCandidates\\:\\:getIterator\\(\\) return type has no value type specified in iterable type Traversable\\<mixed, mixed\\>\\.$#"
+			count: 1
+			path: lib/Domain/FilePathCandidates.php
+
+		-
 			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\FilePathCandidates\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: lib/Domain/FilePathCandidates.php
 
 		-
-			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\FilePathCandidates\\:\\:getIterator\\(\\) return type has no value type specified in iterable type Traversable\\<mixed, mixed\\>\\.$#"
+			message: "#^Property Phpactor\\\\ClassFileConverter\\\\Domain\\\\FilePathCandidates\\:\\:\\$filePaths has no typehint specified\\.$#"
 			count: 1
 			path: lib/Domain/FilePathCandidates.php
 
