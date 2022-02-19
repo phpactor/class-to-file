@@ -5,6 +5,7 @@ namespace Phpactor\ClassFileConverter\Domain;
 use IteratorAggregate;
 use ArrayIterator;
 use RuntimeException;
+use Traversable;
 
 final class ClassNameCandidates implements IteratorAggregate
 {
@@ -22,7 +23,7 @@ final class ClassNameCandidates implements IteratorAggregate
         return new self($classNames);
     }
 
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator(array_values($this->classNames));
     }

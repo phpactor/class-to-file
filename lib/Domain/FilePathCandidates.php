@@ -5,6 +5,7 @@ namespace Phpactor\ClassFileConverter\Domain;
 use IteratorAggregate;
 use RuntimeException;
 use ArrayIterator;
+use Traversable;
 
 final class FilePathCandidates implements IteratorAggregate
 {
@@ -53,7 +54,7 @@ final class FilePathCandidates implements IteratorAggregate
         return empty($this->filePaths);
     }
 
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->filePaths);
     }
