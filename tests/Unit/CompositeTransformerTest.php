@@ -10,9 +10,12 @@ use Phpactor\ClassFileConverter\Domain\FileToClass;
 use Phpactor\ClassFileConverter\Domain\FilePathCandidates;
 use Phpactor\ClassFileConverter\Domain\ClassNameCandidates;
 use Phpactor\ClassFileConverter\Domain\FilePath;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class CompositeTransformerTest extends TestCase
 {
+    use ProphecyTrait;
+
     private $transformer;
 
     public function setUp(): void

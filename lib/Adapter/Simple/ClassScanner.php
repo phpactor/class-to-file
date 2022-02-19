@@ -3,6 +3,7 @@
 namespace Phpactor\ClassFileConverter\Adapter\Simple;
 
 use RuntimeException;
+use function token_name;
 
 /**
  * Return the class name from a file.
@@ -13,6 +14,10 @@ class ClassScanner
 {
     public function getClassNameFromFile(string $file): ?string
     {
+        if (!file_exists($file)) {
+            return null;
+        }
+
         $fp = fopen($file, 'r');
 
         $class = $namespace = $buffer = '';
@@ -47,7 +52,7 @@ class ClassScanner
                     }
                 }
 
-                if ($tokens[$i][0] === T_CLASS) {
+                if ($this->isClassLike($tokens[$i])) {
                     for ($j = $i + 1; $j < count($tokens); $j++) {
                         if ($tokens[$j][0] === T_STRING) {
                             $class = $tokens[$i + 2][1];
@@ -63,6 +68,22 @@ class ClassScanner
             return null;
         }
 
-        return $namespace . '\\' . $class;
+        return ltrim($namespace . '\\' . $class, '\\');
+    }
+
+    private function isClassLike($token): bool
+    {
+        if (!is_array($token)) {
+            return false;
+        }
+        if ($token[0] === T_CLASS || $token[0] === T_INTERFACE || $token[0] === T_TRAIT) {
+            return true;
+        }
+
+        if (!defined('T_ENUM')) {
+            return false;
+        }
+
+        return $token[0] === T_ENUM;
     }
 }

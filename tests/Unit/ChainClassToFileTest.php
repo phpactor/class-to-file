@@ -8,9 +8,12 @@ use Phpactor\ClassFileConverter\Domain\ChainClassToFile;
 use Phpactor\ClassFileConverter\Domain\ClassName;
 use Phpactor\ClassFileConverter\Domain\FilePathCandidates;
 use Phpactor\ClassFileConverter\Domain\FilePath;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class ChainClassToFileTest extends TestCase
 {
+    use ProphecyTrait;
+
     private $classToFile1;
     private $classToFile2;
 
