@@ -129,7 +129,6 @@ class ComposerClassToFileTest extends ComposerTestCase
         $this->assertClassNameToFilePath('Twig_Tests_Extension', [ 'psr0/twig/Twig/Tests/Extension.php' ]);
     }
 
-
     /**
      * @testdox PSR-4 fallback
      */

@@ -31,8 +31,8 @@ class ComposerClassToFile implements ClassToFile
     {
         $candidates = [];
         foreach ($this->getStrategies() as $strategy) {
-            list($prefixes, $inflector) = $strategy;
-            $this->resolveFile($candidates, $prefixes, $inflector, $className);
+            list($prefixes, $inflector, $separator) = $strategy;
+            $this->resolveFile($candidates, $prefixes, $inflector, $className, $separator);
         }
 
         // order with the longest prefixes first
@@ -54,30 +54,40 @@ class ComposerClassToFile implements ClassToFile
             [
                 $this->classLoader->getPrefixesPsr4(),
                 new Psr4NameInflector(),
+                Psr4NameInflector::SEPARATOR,
             ],
             [
                 $this->classLoader->getPrefixes(),
                 new Psr0NameInflector(),
+                Psr0NameInflector::SEPARATOR,
             ],
             [
                 $this->classLoader->getClassMap(),
                 new ClassmapNameInflector(),
+                Psr4NameInflector::SEPARATOR,
             ],
             [
                 $this->classLoader->getFallbackDirs(),
                 new Psr0NameInflector(),
+                Psr0NameInflector::SEPARATOR,
             ],
             [
                 $this->classLoader->getFallbackDirsPsr4(),
                 // PSR0 name inflector works here as there is no prefix
                 new Psr0NameInflector(),
+                Psr0NameInflector::SEPARATOR,
             ],
         ];
     }
 
-    private function resolveFile(&$candidates, array $prefixes, NameInflector $inflector, ClassName $className): void
-    {
-        $fileCandidates = $this->getFileCandidates($className, $prefixes);
+    private function resolveFile(
+        &$candidates,
+        array $prefixes,
+        NameInflector $inflector,
+        ClassName $className,
+        string $separator,
+    ): void {
+        $fileCandidates = $this->getFileCandidates($className, $prefixes, $separator);
 
         foreach ($fileCandidates as $prefix => $files) {
             $prefixCandidates = [];
@@ -93,7 +103,7 @@ class ComposerClassToFile implements ClassToFile
         }
     }
 
-    private function getFileCandidates(ClassName $className, array $prefixes)
+    private function getFileCandidates(ClassName $className, array $prefixes, string $separator)
     {
         $candidates = [];
 
@@ -102,7 +112,7 @@ class ComposerClassToFile implements ClassToFile
                 $prefix = '';
             }
 
-            if ($prefix && false === $className->beginsWith($prefix)) {
+            if ($prefix && false === $className->beginsWith($prefix, $separator)) {
                 continue;
             }
 

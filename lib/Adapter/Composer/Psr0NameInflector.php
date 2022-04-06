@@ -7,10 +7,12 @@ use Phpactor\ClassFileConverter\Domain\FilePath;
 
 final class Psr0NameInflector implements NameInflector
 {
+    public const SEPARATOR = '_';
+
     public function inflectToRelativePath(string $prefix, ClassName $className, string $mappedPath): FilePath
     {
-        if (substr($prefix, -1) === '_' && $className->beginsWith($prefix)) {
-            $elements = explode('_', $className);
+        if (substr($prefix, -1) === self::SEPARATOR && $className->beginsWith($prefix, self::SEPARATOR)) {
+            $elements = explode(self::SEPARATOR, $className);
             $className = implode('\\', $elements);
         }
 
