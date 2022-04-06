@@ -96,16 +96,6 @@ parameters:
 			path: lib/Domain/ChainFileToClass.php
 
 		-
-			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassName\\:\\:beginsWith\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: lib/Domain/ClassName.php
-
-		-
-			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassName\\:\\:beginsWith\\(\\) has parameter \\$prefix with no typehint specified\\.$#"
-			count: 1
-			path: lib/Domain/ClassName.php
-
-		-
 			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassName\\:\\:fromString\\(\\) has no return typehint specified\\.$#"
 			count: 1
 			path: lib/Domain/ClassName.php
