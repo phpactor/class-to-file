@@ -37,8 +37,20 @@ final class ClassName
         return substr($this->fullyQualifiedName, $pos + 1);
     }
 
-    public function beginsWith($prefix)
+    public function beginsWith(string $prefix, string $separator = '\\'): bool
     {
-        return 0 === strpos($this->fullyQualifiedName, $prefix);
+        if ($prefix === $this->fullyQualifiedName) {
+            return true;
+        }
+
+        if (0 !== strpos($this->fullyQualifiedName, $prefix)) {
+            return false;
+        }
+
+        if (mb_substr($prefix, -1, 1) === $separator) {
+            return true;
+        }
+
+        return mb_substr($this->fullyQualifiedName, mb_strlen($prefix), 1) === $separator;
     }
 }
