@@ -2,6 +2,7 @@
 
 namespace Phpactor\ClassFileConverter\Tests\Integration\Composer;
 
+use Composer\Autoload\ClassLoader;
 use Phpactor\ClassFileConverter\Tests\Integration\IntegrationTestCase;
 use Symfony\Component\Filesystem\Filesystem;
 
@@ -26,7 +27,7 @@ abstract class ComposerTestCase extends IntegrationTestCase
         exec('composer install 2> /dev/null');
     }
 
-    protected function getClassLoader()
+    protected function getClassLoader(): ClassLoader
     {
         return require $this->workspacePath().'/vendor/autoload.php';
     }
