@@ -96,31 +96,6 @@ parameters:
 			path: lib/Domain/ChainFileToClass.php
 
 		-
-			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassName\\:\\:fromString\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: lib/Domain/ClassName.php
-
-		-
-			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassName\\:\\:fromString\\(\\) has parameter \\$string with no typehint specified\\.$#"
-			count: 1
-			path: lib/Domain/ClassName.php
-
-		-
-			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassName\\:\\:name\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: lib/Domain/ClassName.php
-
-		-
-			message: "#^Method Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassName\\:\\:namespace\\(\\) has no return typehint specified\\.$#"
-			count: 1
-			path: lib/Domain/ClassName.php
-
-		-
-			message: "#^Property Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassName\\:\\:\\$fullyQualifiedName has no typehint specified\\.$#"
-			count: 1
-			path: lib/Domain/ClassName.php
-
-		-
 			message: "#^Class Phpactor\\\\ClassFileConverter\\\\Domain\\\\ClassNameCandidates implements generic interface IteratorAggregate but does not specify its types\\: TKey, TValue$#"
 			count: 1
 			path: lib/Domain/ClassNameCandidates.php

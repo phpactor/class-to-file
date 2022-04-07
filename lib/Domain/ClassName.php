@@ -8,7 +8,7 @@ final class ClassName
 {
     public const DEFAULT_NAMESPACE_SEPARATOR = '\\';
 
-    private $fullyQualifiedName;
+    private string $fullyQualifiedName;
 
     private function __construct()
     {
@@ -19,7 +19,7 @@ final class ClassName
         return $this->fullyQualifiedName;
     }
 
-    public static function fromString($string)
+    public static function fromString(string $string): self
     {
         $new = new self();
         $new->fullyQualifiedName = $string;
@@ -27,7 +27,7 @@ final class ClassName
         return $new;
     }
 
-    public function namespace()
+    public function namespace(): string
     {
         return substr($this->fullyQualifiedName, 0, (int) strrpos(
             $this->fullyQualifiedName,
@@ -35,7 +35,7 @@ final class ClassName
         ));
     }
 
-    public function name()
+    public function name(): string
     {
         $pos = strrpos($this->fullyQualifiedName, self::DEFAULT_NAMESPACE_SEPARATOR);
         if (false === $pos) {
@@ -63,7 +63,7 @@ final class ClassName
 
     private function isNamespaceSeparator(
         string $character,
-        string $additionalNseparator = self::DEFAULT_NAMESPACE_SEPARATOR,
+        string $additionalNseparator = self::DEFAULT_NAMESPACE_SEPARATOR
     ): bool {
         return in_array($character, [self::DEFAULT_NAMESPACE_SEPARATOR, $additionalNseparator], true);
     }
