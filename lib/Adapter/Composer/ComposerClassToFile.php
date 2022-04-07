@@ -54,28 +54,28 @@ class ComposerClassToFile implements ClassToFile
             [
                 $this->classLoader->getPrefixesPsr4(),
                 new Psr4NameInflector(),
-                Psr4NameInflector::SEPARATOR,
+                Psr4NameInflector::NAMESPACE_SEPARATOR,
             ],
             [
                 $this->classLoader->getPrefixes(),
                 new Psr0NameInflector(),
-                Psr0NameInflector::SEPARATOR,
+                Psr0NameInflector::NAMESPACE_SEPARATOR,
             ],
             [
                 $this->classLoader->getClassMap(),
                 new ClassmapNameInflector(),
-                Psr4NameInflector::SEPARATOR,
+                Psr4NameInflector::NAMESPACE_SEPARATOR,
             ],
             [
                 $this->classLoader->getFallbackDirs(),
                 new Psr0NameInflector(),
-                Psr0NameInflector::SEPARATOR,
+                Psr0NameInflector::NAMESPACE_SEPARATOR,
             ],
             [
                 $this->classLoader->getFallbackDirsPsr4(),
                 // PSR0 name inflector works here as there is no prefix
                 new Psr0NameInflector(),
-                Psr0NameInflector::SEPARATOR,
+                Psr0NameInflector::NAMESPACE_SEPARATOR,
             ],
         ];
     }

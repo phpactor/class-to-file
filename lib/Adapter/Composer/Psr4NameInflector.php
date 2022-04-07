@@ -7,11 +7,11 @@ use Phpactor\ClassFileConverter\Domain\FilePath;
 
 final class Psr4NameInflector implements NameInflector
 {
-    public const SEPARATOR = '\\';
+    public const NAMESPACE_SEPARATOR = ClassName::DEFAULT_NAMESPACE_SEPARATOR;
 
     public function inflectToRelativePath(string $prefix, ClassName $className, string $mappedPath): FilePath
     {
-        $relativePath = str_replace(self::SEPARATOR, '/', substr($className, strlen($prefix))).'.php';
+        $relativePath = str_replace(self::NAMESPACE_SEPARATOR, '/', substr($className, strlen($prefix))).'.php';
 
         return FilePath::fromParts([$mappedPath, $relativePath]);
     }
@@ -24,7 +24,7 @@ final class Psr4NameInflector implements NameInflector
         }
 
         $className = substr($filePath, strlen($pathPrefix) + 1);
-        $className = str_replace('/', self::SEPARATOR, $className);
+        $className = str_replace('/', self::NAMESPACE_SEPARATOR, $className);
         $className = $classPrefix.$className;
         $className = preg_replace('{\.(.+)$}', '', $className);
 
