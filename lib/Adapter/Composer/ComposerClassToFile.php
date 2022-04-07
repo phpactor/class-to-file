@@ -11,15 +11,9 @@ use Psr\Log\NullLogger;
 
 class ComposerClassToFile implements ClassToFile
 {
-    /**
-     * @var ClassLoader
-     */
-    private $classLoader;
+    private ClassLoader $classLoader;
 
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
+    private LoggerInterface $logger;
 
     public function __construct(ClassLoader $classLoader, LoggerInterface $logger = null)
     {
@@ -85,7 +79,7 @@ class ComposerClassToFile implements ClassToFile
         array $prefixes,
         NameInflector $inflector,
         ClassName $className,
-        string $separator,
+        string $separator
     ): void {
         $fileCandidates = $this->getFileCandidates($className, $prefixes, $separator);
 
