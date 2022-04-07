@@ -43,6 +43,17 @@ class ComposerClassToFileTest extends ComposerTestCase
     }
 
     /**
+     * @testdox PSR-4 class name to a file path.
+     */
+    public function testPsr4WithClassmapAuthoritative(): void
+    {
+        $this->loadExample('psr4-classmap-authoritative.json');
+        $this->getClassLoader()->addClassMap(['Acme\\Test\\Foo\\Bar' => $this->workspacePath() . '/psr4/Foo/Bar.php']);
+        $this->assertClassNameToFilePath('Acme\\Test\\Foo\\Bar2', ['psr4/Foo/Bar2.php']);
+        $this->assertClassNameToFilePath('Acme\\Test\\Foo\\Class2', ['psr4/Foo/Class2.php']);
+    }
+
+    /**
      * @testdox PSR-4 class in dev namespace
      */
     public function testPsr4Dev(): void
@@ -117,7 +128,6 @@ class ComposerClassToFileTest extends ComposerTestCase
         $this->loadExample('psr0-short-prefix.json');
         $this->assertClassNameToFilePath('Twig_Tests_Extension', [ 'psr0/twig/Twig/Tests/Extension.php' ]);
     }
-
 
     /**
      * @testdox PSR-4 fallback
