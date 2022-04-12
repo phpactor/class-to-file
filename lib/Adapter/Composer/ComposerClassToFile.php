@@ -25,8 +25,8 @@ class ComposerClassToFile implements ClassToFile
     {
         $candidates = [];
         foreach ($this->getStrategies() as $strategy) {
-            list($prefixes, $inflector, $separator) = $strategy;
-            $this->resolveFile($candidates, $prefixes, $inflector, $className, $separator);
+            [$prefixes, $inflector] = $strategy;
+            $this->resolveFile($candidates, $prefixes, $inflector, $className, $inflector->getNamespaceSeparator());
         }
 
         // order with the longest prefixes first
@@ -48,28 +48,23 @@ class ComposerClassToFile implements ClassToFile
             [
                 $this->classLoader->getPrefixesPsr4(),
                 new Psr4NameInflector(),
-                Psr4NameInflector::NAMESPACE_SEPARATOR,
             ],
             [
                 $this->classLoader->getPrefixes(),
                 new Psr0NameInflector(),
-                Psr0NameInflector::NAMESPACE_SEPARATOR,
             ],
             [
                 $this->classLoader->getClassMap(),
                 new ClassmapNameInflector(),
-                Psr4NameInflector::NAMESPACE_SEPARATOR,
             ],
             [
                 $this->classLoader->getFallbackDirs(),
                 new Psr0NameInflector(),
-                Psr0NameInflector::NAMESPACE_SEPARATOR,
             ],
             [
                 $this->classLoader->getFallbackDirsPsr4(),
                 // PSR0 name inflector works here as there is no prefix
                 new Psr0NameInflector(),
-                Psr0NameInflector::NAMESPACE_SEPARATOR,
             ],
         ];
     }
@@ -78,10 +73,9 @@ class ComposerClassToFile implements ClassToFile
         &$candidates,
         array $prefixes,
         NameInflector $inflector,
-        ClassName $className,
-        string $separator
+        ClassName $className
     ): void {
-        $fileCandidates = $this->getFileCandidates($className, $prefixes, $separator);
+        $fileCandidates = $this->getFileCandidates($className, $prefixes, $inflector->getNamespaceSeparator());
 
         foreach ($fileCandidates as $prefix => $files) {
             $prefixCandidates = [];
