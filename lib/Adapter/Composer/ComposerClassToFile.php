@@ -26,7 +26,7 @@ class ComposerClassToFile implements ClassToFile
         $candidates = [];
         foreach ($this->getStrategies() as $strategy) {
             [$prefixes, $inflector] = $strategy;
-            $this->resolveFile($candidates, $prefixes, $inflector, $className, $inflector->getNamespaceSeparator());
+            $this->resolveFile($candidates, $prefixes, $inflector, $className);
         }
 
         // order with the longest prefixes first
