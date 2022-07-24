@@ -6,8 +6,8 @@ use Composer\Autoload\ClassLoader;
 use Phpactor\ClassFileConverter\Domain\FilePath;
 use Phpactor\ClassFileConverter\Domain\FileToClass;
 use Phpactor\ClassFileConverter\Domain\ClassNameCandidates;
-use Webmozart\PathUtil\Path;
 use InvalidArgumentException;
+use Symfony\Component\Filesystem\Path;
 
 final class ComposerFileToClass implements FileToClass
 {

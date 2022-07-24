@@ -2,7 +2,7 @@
 
 namespace Phpactor\ClassFileConverter\Domain;
 
-use Webmozart\PathUtil\Path;
+use Symfony\Component\Filesystem\Path;
 
 final class FilePath
 {
