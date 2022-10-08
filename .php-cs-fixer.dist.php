@@ -7,7 +7,8 @@ $finder = PhpCsFixer\Finder::create()
     ->in('tests')
     ->exclude([
         'Workspace',
-        'Integration/Composer/project'
+        'Integration/Composer/project',
+        'Integration/Simple/project'
     ])
 ;
 
