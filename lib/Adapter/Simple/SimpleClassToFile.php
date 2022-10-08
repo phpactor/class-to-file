@@ -43,7 +43,7 @@ class SimpleClassToFile implements ClassToFile
         foreach ($iterator as $phpFile) {
             $scannedClass = $this->classScanner->getClassNameFromFile($phpFile->getPathName());
 
-            if (ClassName::fromString($scannedClass) == $className) {
+            if ($scannedClass && ClassName::fromString($scannedClass) == $className) {
                 $candidates[] = FilePath::fromString($phpFile->getPathName());
             }
         }

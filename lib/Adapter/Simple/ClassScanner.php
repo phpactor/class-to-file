@@ -55,7 +55,7 @@ class ClassScanner
 
                 if ($this->isClassLike($tokens[$i])) {
                     for ($j = $i + 1; $j < count($tokens); $j++) {
-                        if ($tokens[$j][0] === T_STRING) {
+                        if ($tokens[$j][0] === T_STRING && isset($tokens[$i + 2][1])) {
                             $class = $tokens[$i + 2][1];
 
                             break 2;

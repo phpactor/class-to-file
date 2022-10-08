@@ -30,6 +30,16 @@ class SimpleClassToFileTest extends SimpleTestCase
         ]), $candidates);
     }
 
+    public function testClassToFileInvalid(): void
+    {
+        $candidates = $this->classToFile->classToFileCandidates(
+            ClassName::fromString('InvalidClass')
+        );
+
+        $this->assertEquals(FilePathCandidates::fromFilePaths([
+        ]), $candidates);
+    }
+
     public function testClassToFileDeeper(): void
     {
         $candidates = $this->classToFile->classToFileCandidates(ClassName::fromString('Acme\\NamespaceHere\\Hallo'));
