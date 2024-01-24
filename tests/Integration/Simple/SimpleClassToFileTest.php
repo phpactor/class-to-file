@@ -30,6 +30,15 @@ class SimpleClassToFileTest extends SimpleTestCase
         ]), $candidates);
     }
 
+    public function testAbsoluteClassNameToFile(): void
+    {
+        $candidates = $this->classToFile->classToFileCandidates(ClassName::fromString('\\Acme\\Foobar'));
+
+        $this->assertEquals(FilePathCandidates::fromFilePaths([
+            FilePath::fromString(__DIR__ . '/../../Workspace/lib/Foobar.php')
+        ]), $candidates);
+    }
+
     public function testClassToFileInvalid(): void
     {
         $candidates = $this->classToFile->classToFileCandidates(

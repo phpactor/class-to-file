@@ -25,6 +25,11 @@ class ClassNameTest extends TestCase
                 true,
             ],
             [
+                '\\Foobar\\BarFoo',
+                'Foobar\\BarFoo',
+                true,
+            ],
+            [
                 'Foobar\\BarFoo',
                 'Foobar\\BarFoo',
                 true,
