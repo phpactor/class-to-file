@@ -31,7 +31,7 @@ class ComposerClassToFile implements ClassToFile
 
         // order with the longest prefixes first
         uksort($candidates, function ($prefix1, $prefix2) {
-            return strlen($prefix2) <=> strlen($prefix1);
+            return strlen((string)$prefix2) <=> strlen((string)$prefix1);
         });
 
         // flatten to a single array

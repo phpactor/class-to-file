@@ -22,7 +22,7 @@ final class ClassName
     public static function fromString(string $string): self
     {
         $new = new self();
-        $new->fullyQualifiedName = $string;
+        $new->fullyQualifiedName = ltrim($string, self::DEFAULT_NAMESPACE_SEPARATOR);
 
         return $new;
     }
