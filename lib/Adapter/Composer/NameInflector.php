@@ -10,4 +10,6 @@ interface NameInflector
     public function inflectToRelativePath(string $prefix, ClassName $className, string $mappedPath): FilePath;
 
     public function inflectToClassName(FilePath $filePath, string $pathPrefix, string $classPrefix): ClassName;
+
+    public function getNamespaceSeparator(): string;
 }
