@@ -1,0 +1,16 @@
+{
+    "name": "dantleech/symlinked",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "dantleech",
+            "email": "dan.t.leech@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Acme\\Test\\": "./"
+        }
+    }
+}

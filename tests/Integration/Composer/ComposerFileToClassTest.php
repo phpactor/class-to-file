@@ -36,6 +36,15 @@ class ComposerFileToClassTest extends ComposerTestCase
     }
 
     /**
+     * @testdox PSR-4 file with symlinked path components
+     */
+    public function testPsr4Symlinked(): void
+    {
+        $this->loadExample('psr4-symlinked-project.json');
+        $this->assertFilePathToClassName('/symlinked-package/Class.php', ['Acme\\Test\\Class']);
+    }
+
+    /**
      * @testdox PSR-4 multiple matching prefixes
      */
     public function testPsr4MultipleMatches(): void

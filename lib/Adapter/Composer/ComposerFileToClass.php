@@ -77,11 +77,11 @@ final class ComposerFileToClass implements FileToClass
             $pathPrefixes = (array) $pathPrefixes;
 
             // remove any relativeness from the paths
-            //
-            // TODO: realpath will return void if the path does not exist
-            //       we should not depend on the file path existing.
+            // we should not depend on the file path existing.
             $pathPrefixes = array_map(function ($pathPrefix) {
-                return Path::canonicalize($pathPrefix);
+                $canonicalizedPath = Path::canonicalize($pathPrefix);
+                $realPath = realpath($canonicalizedPath);
+                return $realPath ?: $canonicalizedPath;
             }, $pathPrefixes);
 
             foreach ($pathPrefixes as $pathPrefix) {
