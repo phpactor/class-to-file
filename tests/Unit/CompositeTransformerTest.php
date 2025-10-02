@@ -11,12 +11,17 @@ use Phpactor\ClassFileConverter\Domain\FilePathCandidates;
 use Phpactor\ClassFileConverter\Domain\ClassNameCandidates;
 use Phpactor\ClassFileConverter\Domain\FilePath;
 use Prophecy\PhpUnit\ProphecyTrait;
+use Prophecy\Prophecy\ObjectProphecy;
 
 class CompositeTransformerTest extends TestCase
 {
     use ProphecyTrait;
 
     private $transformer;
+
+    private ObjectProphecy $classToFile;
+
+    private ObjectProphecy $fileToClassCandidates;
 
     public function setUp(): void
     {

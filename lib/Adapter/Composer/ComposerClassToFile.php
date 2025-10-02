@@ -15,7 +15,7 @@ class ComposerClassToFile implements ClassToFile
 
     private LoggerInterface $logger;
 
-    public function __construct(ClassLoader $classLoader, LoggerInterface $logger = null)
+    public function __construct(ClassLoader $classLoader, ?LoggerInterface $logger = null)
     {
         $this->classLoader = $classLoader;
         $this->logger = $logger ?: new NullLogger();
