@@ -1,0 +1,18 @@
+{
+    "name": "dantleech/basic",
+    "authors": [
+        {
+            "name": "dantleech",
+            "email": "dan.t.leech@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./*"
+        }
+    ],
+    "require": {
+        "dantleech/symlinked": "1.0.0"
+    }
+}
