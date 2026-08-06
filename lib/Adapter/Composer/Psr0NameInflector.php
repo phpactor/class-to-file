@@ -31,4 +31,9 @@ final class Psr0NameInflector implements NameInflector
 
         return ClassName::fromString($className);
     }
+
+    public function getNamespaceSeparator(): string
+    {
+        return self::NAMESPACE_SEPARATOR;
+    }
 }
