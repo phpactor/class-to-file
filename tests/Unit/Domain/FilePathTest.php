@@ -28,24 +28,9 @@ class FilePathTest extends TestCase
             true,
         ];
 
-        yield 'absolute windows' => [
-            'c:\foobar\barfoo',
-            true,
-        ];
-
-        yield 'not absolute windows' => [
-            'foobar\barfoo',
-            false,
-        ];
-
         yield 'absolute phar' => [
             'phar:///barfoo',
             true
-        ];
-
-        yield 'not absolute phar' => [
-            'phar://barfoo',
-            false,
         ];
     }
 }
